@@ -1,0 +1,10 @@
+1.dokumentacja
+wstęp teoretyczny zawierający opis problemu
+przegląd literatury
+proponowane rozwiązanie
+wyniki, które sa jakościowe i ilościowe (walidacja wyniku programu z referencją - wiecej niż jeden testów, ilosciowe - analiza złożoności obliczeniowej)
+dokumentacja do GUI.
+podsumowanie kilka zdań, w których bedzie co udało się zrobić, z czego jestemy zadowolone, co należałoby poprawić
+
+wynik działania programu zapisany w postaci raportu + screenshot pokolorowanego grafu.
+
