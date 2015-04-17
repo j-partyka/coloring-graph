@@ -1,3 +1,15 @@
+DO ZROBIENIA:
+1. Podzial na klasy.
+2. Dodać nowe operatory mutacji i wyboru rodziców i crossovera.
+3. Zapisywanie tego do pliku.
+4. Dodać grafy.
+5. Young
+6. GUI
+7.komentarze
+8. dokumentacja
+
+
+
 1.dokumentacja
 wstęp teoretyczny zawierający opis problemu
 przegląd literatury
@@ -6,5 +18,8 @@ wyniki, które sa jakościowe i ilościowe (walidacja wyniku programu z referenc
 dokumentacja do GUI.
 podsumowanie kilka zdań, w których bedzie co udało się zrobić, z czego jestemy zadowolone, co należałoby poprawić
 
+
 wynik działania programu zapisany w postaci raportu + screenshot pokolorowanego grafu.
+
+
 
