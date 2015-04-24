@@ -1,6 +1,4 @@
 import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 public class Main {
 //ID != 150
@@ -19,14 +17,27 @@ public class Main {
 
         Parent p1 = new Parent();
         Parent p2 = new Parent();
+
+        int temp1 = p1.random(chromosom);
+        int temp2 = p2.random(chromosom);
+
         for (int p = 0; p < 300; p++) {
-            Mutation.one(Crossover.one(p1.random(chromosom), p2.random(chromosom), chromosom), 10);
+            Mutation.one(Crossover.onePoint(temp1,temp2, chromosom), 10);
+        }
+
+//        for (int p = 0; p < 300; p++) {
+//            Crossover.onePoint(temp1, temp2, chromosom);
+//        }
+
+        for (int p = 0; p < 300; p++) {
+            Crossover.twoPoint(temp1, temp2, chromosom);
         }
 
         Display d = new Display();
 
-        d.graph(chromosom);
-        d.goodNeighbour(chromosom);
+        d.IdColor(chromosom);
+//        d.graph(chromosom);
+//        d.goodNeighbour(chromosom);
     }
 
 

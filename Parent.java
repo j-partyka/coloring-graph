@@ -22,9 +22,9 @@ public class Parent {
         {
             random2=generator.nextInt(100);
         }
-        System.out.println("random1:" +random1);
-        System.out.println("random2: "+random2);
-        System.out.println();
+//        System.out.println("random1:" +random1);
+//        System.out.println("random2: "+random2);
+//        System.out.println();
         //teraz z dwóch rodziców musimy wybraæ lepszego(?)
         //przejæ po wszystkich s¹siadach i naliczaæ ile ma "dobry" kolor
         //je¿eli tyle samo dla random1 i random2 to wybieramy random1
@@ -43,9 +43,9 @@ public class Parent {
             //System.out.println(chromosom1.get(random2).sasiedzi.get(d));
             //System.out.println(chromosom1.get(d).kolor);
         }
-        System.out.println("ilosc1: " + ilosc1);
-        System.out.println("ilosc2: " + ilosc2);
-        System.out.println();
+//        System.out.println("ilosc1: " + ilosc1);
+//        System.out.println("ilosc2: " + ilosc2);
+//        System.out.println();
         if(ilosc1>=ilosc2) return random1;
         if(ilosc1<ilosc2) return random2;
         return 0;

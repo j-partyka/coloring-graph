@@ -22,6 +22,18 @@ public class Display {
         }
     }
 
+    public void IdColor(Vector<Vertex> chromosom) {
+        for (int j = 0; j < chromosom.size(); j++) {
+            if (chromosom.get(j).id != 150) {
+//                System.out.println("poczatek wierzchołka");
+                System.out.println("ID: " + chromosom.get(j).id);
+                System.out.println("Kolor: " + chromosom.get(j).kolor);
+//                System.out.println("koniec wierzchołka");
+                System.out.println();
+            }
+        }
+    }
+
     public void goodNeighbour(Vector<Vertex> chromosom){
         int pomoc=0;
         for (int b  = 0; b < chromosom.size(); b++){

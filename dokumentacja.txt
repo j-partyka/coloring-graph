@@ -5,8 +5,9 @@ DO ZROBIENIA:
 4. Dodać grafy.
 5. Young
 6. GUI
-7.komentarze
+7. komentarze
 8. dokumentacja
+
 
 
 
