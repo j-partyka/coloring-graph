@@ -5,9 +5,9 @@ import java.util.Vector;
  */
 public class Crossover {
     //crossover
-    public static Vector<Vertex> one(int id1, int id2, Vector<Vertex> chromosom){
-        Vertex parent1 = chromosom.get(id1);
-        Vertex parent2 = chromosom.get(id2);
+ public static Vector<Vertex> one( Map.Entry<Integer,Integer> parents, Vector<Vertex> chromosom){
+        Vertex parent1 = chromosom.get(parents.getValue());
+        Vertex parent2 = chromosom.get(parents.getKey());
 
         int kolor1 = parent1.kolor;
         int kolor2 = parent2.kolor;
