@@ -1,15 +1,17 @@
+import java.util.Map;
 import java.util.Vector;
 
 /**
  * Created by asia on 17.04.15.
  */
 public class Crossover {
+
     //one-point crossover
     //A single crossover point on both parents' organism strings is selected. A
     // All data beyond that point in either organism string is swapped between the two parent organisms. The resulting organisms are the children:
-    public static Vector<Vertex> onePoint(int id1, int id2, Vector<Vertex> chromosom){
-        Vertex parent1 = chromosom.get(id1);
-        Vertex parent2 = chromosom.get(id2);
+ public static Vector<Vertex> onePoint( Map.Entry<Integer,Integer> parents, Vector<Vertex> chromosom){
+        Vertex parent1 = chromosom.get(parents.getValue());
+        Vertex parent2 = chromosom.get(parents.getKey());
 
         int kolor1 = parent1.kolor;
         int kolor2 = parent2.kolor;
@@ -37,10 +39,14 @@ public class Crossover {
         }
         return chromosom;
     }
+    //!!!!!!!!!!
+    // Nie wiem dlaczego, ale nie twoPoint nie działało,
+    //gdzy chciałam zamienić argumenty int id1, int id2 na  Map.Entry<Integer,Integer> parents
+    //!!!!!!!!!!!
     //Two-point crossover
     //Two-point crossover calls for two points to be selected on the parent organism strings.
     // Everything between the two points is swapped between the parent organisms, rendering two child organisms:
-    public static Vector<Vertex> twoPoint(int id1, int id2, Vector<Vertex> chromosom) {
+   public static Vector<Vertex> twoPoint(int id1, int id2, Vector<Vertex> chromosom) {
         Vertex parent1 = chromosom.get(id1);
         Vertex parent2 = chromosom.get(id2);
 

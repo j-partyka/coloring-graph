@@ -22,16 +22,18 @@ public class Main {
         int temp2 = p2.random(chromosom);
 
         for (int p = 0; p < 300; p++) {
-            Mutation.one(Crossover.onePoint(temp1,temp2, chromosom), 10);
+            Mutation.one(Crossover.onePoint(p1.bestparent(chromosom), chromosom), 10);
         }
 
 //        for (int p = 0; p < 300; p++) {
-//            Crossover.onePoint(temp1, temp2, chromosom);
+//            Crossover.onePoint(p1.bestparent(chromosom),chromosom);
 //        }
 
         for (int p = 0; p < 300; p++) {
             Crossover.twoPoint(temp1, temp2, chromosom);
         }
+
+
 
         Display d = new Display();
 
