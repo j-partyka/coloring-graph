@@ -16,8 +16,7 @@ public class Crossover {
         int kolor1 = parent1.kolor;
         int kolor2 = parent2.kolor;
 
-      /*(Random crosspoint = new Random();
-      int random = generator.nextInt(100);*/
+      /*
     /**
      * TO DO
      * dodać losowe wybieranie punktu crosspoit
@@ -39,16 +38,13 @@ public class Crossover {
         }
         return chromosom;
     }
-    //!!!!!!!!!!
-    // Nie wiem dlaczego, ale nie twoPoint nie działało,
-    //gdzy chciałam zamienić argumenty int id1, int id2 na  Map.Entry<Integer,Integer> parents
-    //!!!!!!!!!!!
+    
     //Two-point crossover
     //Two-point crossover calls for two points to be selected on the parent organism strings.
     // Everything between the two points is swapped between the parent organisms, rendering two child organisms:
-   public static Vector<Vertex> twoPoint(int id1, int id2, Vector<Vertex> chromosom) {
-        Vertex parent1 = chromosom.get(id1);
-        Vertex parent2 = chromosom.get(id2);
+   public static Vector<Vertex> twoPoint( Map.Entry<Integer,Integer> parents, Vector<Vertex> chromosom) {
+	   Vertex parent1 = chromosom.get(parents.getValue());
+       Vertex parent2 = chromosom.get(parents.getKey());
 
         int kolor1 = parent1.kolor;
         int kolor2 = parent2.kolor;
