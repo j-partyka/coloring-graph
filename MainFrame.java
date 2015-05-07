@@ -1,6 +1,6 @@
-
-
+import java.io.File;
 import java.util.*;
+import javax.swing.JFileChooser;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,7 +13,10 @@ import java.util.*;
  */
 public class MainFrame extends javax.swing.JFrame {
     
-    int slc=1, crv=1, mtn=1;
+    private int slc=1, crv=1, mtn=1;
+    private File file;
+    private String filename = "graf.txt";
+    
 
     /**
      * Creates new form MainFrame
@@ -35,6 +38,7 @@ public class MainFrame extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
+        fileChooser = new javax.swing.JFileChooser();
         selection1 = new javax.swing.JRadioButton();
         selection2 = new javax.swing.JRadioButton();
         crossover1 = new javax.swing.JRadioButton();
@@ -46,6 +50,9 @@ public class MainFrame extends javax.swing.JFrame {
         mutationLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
+        plikButton = new javax.swing.JButton();
+
+        fileChooser.setFileFilter(new FileFilter());
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +67,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(selection2);
         selection2.setText("Best Parent");
-        selection2.setActionCommand("Best Parent");
         selection2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selection2ActionPerformed(evt);
@@ -114,6 +120,18 @@ public class MainFrame extends javax.swing.JFrame {
         textArea.setRows(5);
         jScrollPane1.setViewportView(textArea);
 
+        plikButton.setText("Wczytaj plik");
+        plikButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                plikButtonMouseReleased(evt);
+            }
+        });
+        plikButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plikButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,6 +163,10 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(crossoverLabel)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(plikButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,8 +186,10 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(selection2)
                     .addComponent(crossover2)
                     .addComponent(gotoweButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(plikButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -199,7 +223,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void gotoweButtonMouseReleased(java.awt.event.MouseEvent evt) {                                           
         // TODO add your handling code here:
         textArea.setText("lalala");
-        Graph g = new Graph();
+        Graph g = new Graph(filename);
         Vector<Vertex> chromosom = g.load();
         Parent p1 = new Parent();
         
@@ -275,6 +299,23 @@ public class MainFrame extends javax.swing.JFrame {
         d.goodNeighbour(chromosom);
     }                                          
 
+    private void plikButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }                                          
+
+    private void plikButtonMouseReleased(java.awt.event.MouseEvent evt) {                                         
+        // TODO add your handling code here:
+        int returnVal = fileChooser.showOpenDialog(this);
+        
+        if(returnVal == JFileChooser.APPROVE_OPTION)
+        {
+            file = fileChooser.getSelectedFile();
+            filename = file.toString();
+            
+        }
+
+    }                                        
+
     /**
      * @param args the command line arguments
      */
@@ -310,6 +351,20 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    class FileFilter extends javax.swing.filechooser.FileFilter {
+        @Override
+        public boolean accept(File file) {
+            // Allow only directories, or files with ".txt" extension
+            return file.isDirectory() || file.getAbsolutePath().endsWith(".txt");
+        }
+        @Override
+        public String getDescription() {
+            // This description will be displayed in the dialog,
+            // hard-coded = ugly, should be done via I18N
+            return "Text documents (*.txt)";
+        }
+    } 
 
     // Variables declaration - do not modify                     
     private javax.swing.ButtonGroup buttonGroup1;
@@ -318,11 +373,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton crossover1;
     private javax.swing.JRadioButton crossover2;
     private javax.swing.JLabel crossoverLabel;
+    private javax.swing.JFileChooser fileChooser;
     private javax.swing.JButton gotoweButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JRadioButton mutation1;
     private javax.swing.JLabel mutationLabel;
+    private javax.swing.JButton plikButton;
     private javax.swing.JRadioButton selection1;
     private javax.swing.JRadioButton selection2;
     private javax.swing.JLabel selectionLabel;
