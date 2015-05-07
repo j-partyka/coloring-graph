@@ -9,31 +9,27 @@ public class Main {
 
         Graph g = new Graph();
         Vector<Vertex> chromosom = g.load();
-      
+        Display d = new Display();
         Parent p1 = new Parent();
         //K - zrobiłam dwie pętle, ale można to zmieniać jak się chce
         
         for (int p = 0; p < 1300; p++) {
         	Map.Entry<Integer,Integer> parent=p1.random(chromosom);
             Mutation.one(Crossover.onePoint(parent, chromosom), 15);
-            
-            
         }
-        for (int p = 0; p < 300; p++) {
+        //A - sprawdzenie
+
+        d.IdColor(chromosom);
+
+        for (int p = 0; p < 1; p++) {
         	Map.Entry<Integer,Integer> parent=p1.bestparent(chromosom);
-            Mutation.one(Crossover.twoPoint(parent, chromosom), 15);
-            
+            Crossover.twoPoint(parent, chromosom);
         }
-        //a tutaj sprawdzenie
-        Display d = new Display();
 
-        d.graph(chromosom);
-        d.goodNeighbour(chromosom);
-        
-
-        
-        
+        //A - a tutaj sprawdzenie
+        System.out.println("CROSSOVER");
+        d.IdColor(chromosom);
+       // d.graph(chromosom);
+       // d.goodNeighbour(chromosom);
     }
-
-
 }

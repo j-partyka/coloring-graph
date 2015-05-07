@@ -1,8 +1,6 @@
 import java.util.Vector;
 
-/**
- * Created by asia on 17.04.15.
- */
+
 public class Display {
 
     public void graph(Vector<Vertex> chromosom) {
@@ -37,8 +35,6 @@ public class Display {
     public void goodNeighbour(Vector<Vertex> chromosom){
         int pomoc=0;
         for (int b  = 0; b < chromosom.size(); b++){
-
-          
             for (int d = 0;d<chromosom.get(b).sasiedzi.size();d++){
                 if(chromosom.get(chromosom.get(b).sasiedzi.get(d)).kolor==chromosom.get(b).kolor&& !(chromosom.get(b).equals(chromosom.get(b).sasiedzi.get(d)))) {
                 	System.out.println(b +" "+ chromosom.get(b).id+" konflikt z "+chromosom.get(b).sasiedzi.get(d));

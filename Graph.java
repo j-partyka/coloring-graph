@@ -23,7 +23,7 @@ public Vector<Vertex> load() {
 
     Scanner sc2 = null;
     try {
-        sc2 = new Scanner(new File("/home/asia/Coding/IdeaProjects/ColorGraph/src/graf.txt"));
+        sc2 = new Scanner(new File("graf.txt"));
     } catch (FileNotFoundException e) {
         e.printStackTrace();
     }
@@ -59,5 +59,4 @@ public Vector<Vertex> load() {
     return chromosom;
     //koniec tworzenia grafu
 }
-
 }

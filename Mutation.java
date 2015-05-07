@@ -2,9 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
 
-/**
- * Created by asia on 17.04.15.
- */
+
 //mutacja
 public class Mutation {
 
