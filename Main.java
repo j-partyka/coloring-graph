@@ -1,4 +1,6 @@
 import java.util.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Main {
 //ID != 150
@@ -7,39 +9,30 @@ public class Main {
 
         Graph g = new Graph();
         Vector<Vertex> chromosom = g.load();
-        //sprawdzam
-
-        //chromosom.get(15).kolor = 5;
-        //chromosom.get(3).kolor = 3;
-
-        //Vector<Wierzch> newChromosom = crossover(3,15,chromosom);
-        //Vector<Wierzch> newChromosom = crossover(parents(chromosom),parents(chromosom),chromosom);
-
+      
         Parent p1 = new Parent();
-        Parent p2 = new Parent();
-
-        int temp1 = p1.random(chromosom);
-        int temp2 = p2.random(chromosom);
-
-        for (int p = 0; p < 300; p++) {
-            Mutation.one(Crossover.onePoint(p1.bestparent(chromosom), chromosom), 10);
+        //K - zrobiłam dwie pętle, ale można to zmieniać jak się chce
+        
+        for (int p = 0; p < 1300; p++) {
+        	Map.Entry<Integer,Integer> parent=p1.random(chromosom);
+            Mutation.one(Crossover.onePoint(parent, chromosom), 15);
+            
+            
         }
-
-//        for (int p = 0; p < 300; p++) {
-//            Crossover.onePoint(p1.bestparent(chromosom),chromosom);
-//        }
-
         for (int p = 0; p < 300; p++) {
-            Crossover.twoPoint(temp1, temp2, chromosom);
+        	Map.Entry<Integer,Integer> parent=p1.bestparent(chromosom);
+            Mutation.one(Crossover.twoPoint(parent, chromosom), 15);
+            
         }
-
-
-
+        //a tutaj sprawdzenie
         Display d = new Display();
 
-        d.IdColor(chromosom);
-//        d.graph(chromosom);
-//        d.goodNeighbour(chromosom);
+        d.graph(chromosom);
+        d.goodNeighbour(chromosom);
+        
+
+        
+        
     }
 
 
