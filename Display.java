@@ -38,13 +38,14 @@ public class Display {
         int pomoc=0;
         for (int b  = 0; b < chromosom.size(); b++){
 
-            //sprawdzanie sąsiadów
+          
             for (int d = 0;d<chromosom.get(b).sasiedzi.size();d++){
-                if(chromosom.get(d).kolor==chromosom.get(b).kolor) {
+                if(chromosom.get(chromosom.get(b).sasiedzi.get(d)).kolor==chromosom.get(b).kolor&& !(chromosom.get(b).equals(chromosom.get(b).sasiedzi.get(d)))) {
+                	System.out.println(b +" "+ chromosom.get(b).id+" konflikt z "+chromosom.get(b).sasiedzi.get(d));
                     pomoc++;
                 }
             }
         }
-        System.out.println(pomoc +" - liczba niedobrych sąsiadów");
+        System.out.println(pomoc +" - liczba niedobrych sÄ…siadĂłw");
     }
 }
