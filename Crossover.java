@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
@@ -74,7 +75,32 @@ public class Crossover {
         return chromosom;
     }
 
-    public static Vector<Vertex> cutAndSplice(Map.Entry<Integer, Integer> parents, Vector<Vertex> chromosom) {
+    //A - Uniform crossover - bits are randomly copied from the first or from the second parent
+    public static Vector<Vertex> uniform(Map.Entry<Integer, Integer> parents, Vector<Vertex> chromosom){
+        Vertex parent1 = chromosom.get(parents.getValue());
+        Vertex parent2 = chromosom.get(parents.getKey());
+
+        int kolor1 = parent1.kolor;
+        int kolor2 = parent2.kolor;
+
+        //TODO zapytać się jak to zrobić, by procentowy udział każdego koloru był 50 procent w chromosomie wynikowym
+        for(int i=0; i<23; i++) {
+            Vertex temp = chromosom.get(i);
+            Random generator = new Random();
+            switch (generator.nextInt(2)){ //A - randomowe wybieranie koloru jednego z dwóch
+                case 0: temp.kolor = kolor1;
+                    break;
+                case 1: temp.kolor = kolor2;
+                    break;
+            }
+            chromosom.set(i,temp);
+        }
+        return chromosom;
+    }
+    /**
+     * TODO zapytać się o cutAndSplice
+     */
+    /*public static Vector<Vertex> cutAndSplice(Map.Entry<Integer, Integer> parents, Vector<Vertex> chromosom) {
         Vertex parent1 = chromosom.get(parents.getValue());
         Vertex parent2 = chromosom.get(parents.getKey());
 
@@ -85,25 +111,15 @@ public class Crossover {
          * dodać losowe wybieranie punktu crosspoit,
          * ustawianie crosspoint1 na mniejszy, a crosspoint2 na większy
          */
-        int crosspoint1 = 5;
-        int crosspoint2 = 17;
+       /* int crosspoint1 = new Random().nextInt(23);
+        int crosspoint2;
+        do{
+            crosspoint2 = new Random().nextInt(23);
+        }while (crosspoint1 != crosspoint2); //A - ustawianie różnych crosspointów
 
-        int i = 0;
-        while (i < 100) {
-            Vertex temp = chromosom.get(i);
-            int newId = temp.id;
-            if (newId != 150) {
-                if (newId < crosspoint1 || newId > crosspoint2) {
-                    temp.kolor = kolor1;
-                } else {
-                    temp.kolor = kolor2;
-                }
-            }
-            chromosom.set(i,temp);
-            i++;
-        }
+
         return chromosom;
-    }
+    }*/
 
     /**A
     * TODO - zapytać się o threeParent

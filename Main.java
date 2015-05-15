@@ -23,7 +23,7 @@ public class Main {
 
         for (int p = 0; p < 1; p++) {
         	Map.Entry<Integer,Integer> parent=p1.bestparent(chromosom);
-            Crossover.twoPoint(parent, chromosom);
+            Crossover.uniform(parent, chromosom);
         }
 
         //A - a tutaj sprawdzenie
