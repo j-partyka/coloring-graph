@@ -17,16 +17,14 @@ public class Main {
         	Map.Entry<Integer,Integer> parent=p1.random(chromosom);
             Mutation.one(Crossover.onePoint(parent, chromosom), 15);
         }
-        //A - sprawdzenie
 
         d.IdColor(chromosom);
 
+        //A - sprawdzanie działania metod crossovera
         for (int p = 0; p < 1; p++) {
         	Map.Entry<Integer,Integer> parent=p1.bestparent(chromosom);
             Crossover.uniform(parent, chromosom);
         }
-
-        //A - a tutaj sprawdzenie
         System.out.println("CROSSOVER");
         d.IdColor(chromosom);
        // d.graph(chromosom);

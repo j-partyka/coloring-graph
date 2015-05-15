@@ -97,6 +97,23 @@ public class Crossover {
         }
         return chromosom;
     }
+
+    //A - Arithmetic crossover - some arithmetic operation is performed to make a new offspring
+    public static Vector<Vertex> arithmetic(Map.Entry<Integer, Integer> parents, Vector<Vertex> chromosom){
+        Vertex parent1 = chromosom.get(parents.getKey());
+        Vertex parent2 = chromosom.get(parents.getValue());
+
+        int kolor1 = parent1.kolor;
+        int kolor2 = parent2.kolor;
+
+        for(int i = 0; i < 23; i++){
+            Vertex temp = chromosom.get(i);
+            temp.kolor = (kolor1*kolor2)%10; //modulo ilość kolorów występujących w danym grafie
+            chromosom.set(i, temp);
+        }
+        return chromosom;
+    }
+
     /**
      * TODO zapytać się o cutAndSplice
      */
