@@ -1,4 +1,5 @@
 import java.util.Map;
+import java.util.Random;
 import java.util.Vector;
 
 
@@ -16,9 +17,9 @@ public class Crossover {
 
     /**A
      * TODO
-     * dodać losowe wybieranie punktu crosspoit
+     * A - napisać funkcję, która będzie zwracać liczbę wierzchołków w grafie, których ID jest różny od 150
      */
-        int crosspoint = 10;
+        int crosspoint = new Random().nextInt(23); //A - generowanie losowej liczby dla crosspoint z ilości wierzchołków w grafie
 
         int i = 0;
         while (i < 100) {
@@ -48,11 +49,13 @@ public class Crossover {
         int kolor2 = parent2.kolor;
         /**
          * TODO
-         * dodać losowe wybieranie punktu crosspoit,
-         * ustawianie crosspoint1 na mniejszy, a crosspoint2 na większy
+         * A - napisać funkcję, która będzie zwracać liczbę wierzchołków w grafie, których ID jest różny od 150
          */
-        int crosspoint1 = 5;
-        int crosspoint2 = 17;
+        int crosspoint1 = new Random().nextInt(23);
+        int crosspoint2;
+        do{
+            crosspoint2 = new Random().nextInt(23);
+        }while (crosspoint1 >= crosspoint2); //A - ustawianie crosspoint1 na mniejszy, a crosspoint2 na większy
 
         int i = 0;
         while (i < 100) {
@@ -96,11 +99,11 @@ public class Crossover {
                     temp.kolor = kolor2;
                 }
             }
+            chromosom.set(i,temp);
             i++;
         }
         return chromosom;
     }
-
 
     /**A
     * TODO - zapytać się o threeParent
