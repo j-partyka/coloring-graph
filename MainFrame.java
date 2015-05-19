@@ -12,11 +12,11 @@ import javax.swing.JFileChooser;
  * @author Dell
  */
 public class MainFrame extends javax.swing.JFrame {
-    
+
     private int slc=1, crv=1, mtn=1;
     private File file;
     private String filename = "graf.txt";
-    
+
 
     /**
      * Creates new form MainFrame
@@ -135,100 +135,100 @@ public class MainFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(selection2)
-                            .addComponent(selection1))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(crossover2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                                .addComponent(gotoweButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(crossover1)
-                                .addGap(47, 47, 47)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(mutationLabel)
-                                    .addComponent(mutation1)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(selectionLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(crossoverLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(plikButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jScrollPane1)
+                                                .addContainerGap())
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(selection2)
+                                                        .addComponent(selection1))
+                                                .addGap(36, 36, 36)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(crossover2)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                                                                .addComponent(gotoweButton))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(crossover1)
+                                                                .addGap(47, 47, 47)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(mutationLabel)
+                                                                        .addComponent(mutation1)))))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(selectionLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(crossoverLabel)
+                                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(plikButton)
+                                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectionLabel)
-                    .addComponent(crossoverLabel)
-                    .addComponent(mutationLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selection1)
-                    .addComponent(crossover1)
-                    .addComponent(mutation1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selection2)
-                    .addComponent(crossover2)
-                    .addComponent(gotoweButton))
-                .addGap(18, 18, 18)
-                .addComponent(plikButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(selectionLabel)
+                                        .addComponent(crossoverLabel)
+                                        .addComponent(mutationLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(selection1)
+                                        .addComponent(crossover1)
+                                        .addComponent(mutation1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(selection2)
+                                        .addComponent(crossover2)
+                                        .addComponent(gotoweButton))
+                                .addGap(18, 18, 18)
+                                .addComponent(plikButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>                        
 
-    private void crossover1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void crossover1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         crv=1;
-    }                                          
+    }
 
-    private void selection1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void selection1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         slc=1;
-    }                                          
+    }
 
-    private void selection2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void selection2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         slc=2;
-    }                                          
+    }
 
-    private void crossover2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void crossover2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         crv=2;
-    }                                          
+    }
 
-    private void mutation1ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void mutation1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         mtn=1;
-    }                                         
+    }
     /*    */
-    private void gotoweButtonMouseReleased(java.awt.event.MouseEvent evt) {                                           
+    private void gotoweButtonMouseReleased(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         textArea.setText("lalala");
-        Graph g = new Graph(filename);
+        Graph g = new Graph();
         Vector<Vertex> chromosom = g.load();
         Parent p1 = new Parent();
-        
+
         for (int p = 0; p < 1300; p++) {
-            
+
             if(slc == 1)
             {
                 Map.Entry<Integer,Integer> parent = p1.random(chromosom);
@@ -292,29 +292,29 @@ public class MainFrame extends javax.swing.JFrame {
                 textArea.setText("\n");
             }
         }*/
-        
+
         Display d = new Display();
 
         d.graph(chromosom);
         d.goodNeighbour(chromosom);
-    }                                          
+    }
 
-    private void plikButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void plikButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                          
+    }
 
-    private void plikButtonMouseReleased(java.awt.event.MouseEvent evt) {                                         
+    private void plikButtonMouseReleased(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         int returnVal = fileChooser.showOpenDialog(this);
-        
+
         if(returnVal == JFileChooser.APPROVE_OPTION)
         {
             file = fileChooser.getSelectedFile();
             filename = file.toString();
-            
+
         }
 
-    }                                        
+    }
 
     /**
      * @param args the command line arguments
@@ -351,7 +351,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
-    
+
     class FileFilter extends javax.swing.filechooser.FileFilter {
         @Override
         public boolean accept(File file) {
@@ -364,7 +364,7 @@ public class MainFrame extends javax.swing.JFrame {
             // hard-coded = ugly, should be done via I18N
             return "Text documents (*.txt)";
         }
-    } 
+    }
 
     // Variables declaration - do not modify                     
     private javax.swing.ButtonGroup buttonGroup1;
