@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Vector;
 
 public class Mutation {
-
+//transposition && first fit galiner hao krzyzowanie
     public static Vector<Vertex> one(Vector<Vertex> chromosom, int iloscKolorow){
         ArrayList<Integer> colors = new ArrayList<Integer>();
         //sprawdzamy kazdy wierzchoĹ‚ek

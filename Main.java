@@ -28,6 +28,8 @@ public class Main {
         System.out.println("CROSSOVER");
         d.IdColor(chromosom);
        // d.graph(chromosom);
-       // d.goodNeighbour(chromosom);
+        d.goodNeighbour(chromosom);
     }
 }
+
+

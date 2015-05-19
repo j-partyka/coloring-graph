@@ -1,0 +1,25 @@
+2015-05-19
+ *rysowanie grafu przez użytkownika
+ *testowanie poprawności wyników
+ *profiler < - narzędzie do testowania, optymalizacji, sprawdza zużycie pamięci
+* prezentacja ma generować raport: generuje graf do pliku,
+ *! dokumentacja projektu : opis zagadnienia, temat, problem, dlaczego chcemy to rozwiązacyać metodą ewolucyjnę
+  jakie są metody rozwiącania problemu, przegląd literatury,
+  proponowane rozwiązania (spójność)
+  czym się inspierowałyśmy
+  testy: wczytać już pokolorowany graf
+  wielkość populacji do gui.
+  podsumowanie
+        future words:)
+        your own opinion.
+  JAKOŚĆ!
+
+  + dokumentacja kodu
+
+  Kasi:
+  //transposition && first fit galiner hao krzyzowanie
+  //pokolorować wstępnie randomowo - porównać czas rozwiązania takiego problemu z rozwiązaniem "czystego" grafu
+  //randomowo na wstępnie - "to już lepsze jest!"
+
+  26.05 - konsultacje
+  09.06 - konsultacje
