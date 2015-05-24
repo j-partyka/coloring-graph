@@ -44,4 +44,19 @@ public class Display {
         }
         System.out.println(pomoc +" - liczba niedobrych sÄ…siadĂłw");
     }
+    
+     public int silentbadNeighbour(Vector<Vertex> chromosom){
+        int pomoc=0;
+        for (int b  = 0; b < chromosom.size(); b++){
+
+          
+            for (int d = 0;d<chromosom.get(b).sasiedzi.size();d++){
+                if(chromosom.get(chromosom.get(b).sasiedzi.get(d)).kolor==chromosom.get(b).kolor&& !(chromosom.get(b).equals(chromosom.get(b).sasiedzi.get(d)))) {
+                    pomoc++;
+                }
+            }
+        }
+        return pomoc;
+    }
+    
 }

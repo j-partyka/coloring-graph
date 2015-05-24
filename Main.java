@@ -12,24 +12,40 @@ public class Main {
         Display d = new Display();
         Parent p1 = new Parent();
         //K - zrobiłam dwie pętle, ale można to zmieniać jak się chce
+        //for(int p = 0; p < 20000; p++) K
+        {
+        	//while zli sasiedzi!=0 K 
+        	//i tutaj kombinacje co Ola robi do wyboru użytkownika K
+        	
+        }
         
-        for (int p = 0; p < 1300; p++) {
-        	Map.Entry<Integer,Integer> parent=p1.random(chromosom);
-            Mutation.one(Crossover.onePoint(parent, chromosom), 15);
+        for (int p = 0; p < 500; p++) {
+        	Map.Entry<Integer,Integer> parent=p1.fitparent(chromosom);
+            chromosom =Mutation.one(Crossover.onePoint(parent, chromosom), 6);
+            
         }
-
-        d.IdColor(chromosom);
-
-        //A - sprawdzanie działania metod crossovera
-        for (int p = 0; p < 1; p++) {
+        for (int p = 0; p < 20000; p++) {
         	Map.Entry<Integer,Integer> parent=p1.bestparent(chromosom);
-            Crossover.uniform(parent, chromosom);
+        	 chromosom =Mutation.one(Crossover.twoPoint(parent, chromosom),6);
+
+             if (d.silentbadNeighbour(chromosom)==0) 
+            	 {System.out.println("działa"+ p);
+            	 break;
+            	 
+            	 }
         }
-        System.out.println("CROSSOVER");
-        d.IdColor(chromosom);
-       // d.graph(chromosom);
+        
+        //a tutaj sprawdzenie
+
+        
+        //Map.Entry<Integer,Integer> parent=p1.fitnessparent(chromosom);
+        for (int p = 0; p < 1; p++) {
+        //chromosom=Crossover.twoPoint(parent, chromosom);
+        }
+        //d.graph(chromosom);
         d.goodNeighbour(chromosom);
+        //d.IdColor(chromosom);
     }
+
+
 }
-
-
