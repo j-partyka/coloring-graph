@@ -49,7 +49,7 @@ public class Display {
                 }
             }
         }
-        System.out.println(pomoc +" - liczba niedobrych sÄ…siadĂłw");
+        System.out.println(pomoc +" - liczba niedobrych sąsiadów");
     }
     
      public int silentbadNeighbour(Vector<Vertex> chromosom){
