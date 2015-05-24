@@ -5,188 +5,126 @@ import java.util.Vector;
 
 //parents
 public class Parent {
-    public Map.Entry<Integer,Integer> random(Vector<Vertex> chromosom1)
+	 Display d = new Display();
+	
+	
+    public Map.Entry< Vector<Vertex> ,Vector<Vertex>> random(Vector<Vector<Vertex> > population)
     {
-        int ilosc1=0;
-        int ilosc2=0;
-        Random generator = new Random();
-        int random1=generator.nextInt(100);
-        int random2=generator.nextInt(100);
-        while(chromosom1.get(random1).id==150)
-        {
-            random1=generator.nextInt(100);
-        }
-        while(chromosom1.get(random2).id==150 || chromosom1.get(random2).id==random1 )
-        {
-            random2=generator.nextInt(100);
-        }
-        //teraz z dwĂłch rodzicĂłw musimy wybraĂ¦ lepszego(?)
-        //przejÂśĂ¦ po wszystkich sÂąsiadach i naliczaĂ¦ ile ma "dobry" kolor
-        //jeÂżeli tyle samo dla random1 i random2 to wybieramy random1
-        for (int d =0;d<chromosom1.get(random1).sasiedzi.size();d++)
-        {
-        	//chromosom.get(random1).sasiedzi.get(d)
-            if(chromosom1.get(chromosom1.get(random1).sasiedzi.get(d)).kolor!=chromosom1.get(random1).kolor) ilosc1++;
-            //System.out.println(chromosom1.get(random1).sasiedzi.get(d));
-            //System.out.println(chromosom1.get(d).kolor);
-
-        }
-        //dla drugiego to samo
-        for (int d =0;d<chromosom1.get(random2).sasiedzi.size();d++)
-        {
-            if(chromosom1.get(chromosom1.get(random2).sasiedzi.get(d)).kolor!=chromosom1.get(random2).kolor) ilosc2++;
-        }
-        int parent1id=0;
-        int parent2id=0;
-        if(ilosc1>=ilosc2)  parent1id=random1;
-        if(ilosc1<ilosc2) parent1id=random2;
+    	//nowe :(
+    	Random generator = new Random();
+        int random1=generator.nextInt(population.size());
+        int random2=generator.nextInt(population.size());
+        Vector<Vertex> parent1id;
+        Vector<Vertex> parent2id;
         
-        
-        
-        random1=generator.nextInt(100);
-        random2=generator.nextInt(100);
-        while(chromosom1.get(random1).id==150 && chromosom1.get(random2).id==parent1id)
+        if(d.silentbadNeighbour(population.get(random1))<d.silentbadNeighbour(population.get(random2))) 
         {
-            random1=generator.nextInt(100);
+        	parent1id=population.get(random1);
         }
-        while(chromosom1.get(random2).id==150 && chromosom1.get(random2).id==random1&& chromosom1.get(random2).id==parent1id)
-        {
-            random2=generator.nextInt(100);
-        }
-        for (int d =0;d<chromosom1.get(random1).sasiedzi.size();d++)
-        {
-            if(chromosom1.get(chromosom1.get(random1).sasiedzi.get(d)).kolor!=chromosom1.get(random1).kolor) ilosc1++;
-
-
-        }
-        //dla drugiego to samo
-        for (int d =0;d<chromosom1.get(random2).sasiedzi.size();d++)
-        {
-            if(chromosom1.get(chromosom1.get(random2).sasiedzi.get(d)).kolor!=chromosom1.get(random2).kolor) ilosc2++;
-
-        }
+        else {parent1id=population.get(random2);}
         
-        if(ilosc1>=ilosc2)  parent2id=random1;
-        if(ilosc1<ilosc2) parent2id=random2;
-           
-        Map.Entry<Integer,Integer> entry = new AbstractMap.SimpleEntry< Integer, Integer>(parent1id, parent2id);
+        random1=generator.nextInt(5);
+        random2=generator.nextInt(5);
         
+        if(d.silentbadNeighbour(population.get(random1))<d.silentbadNeighbour(population.get(random2))) 
+        {
+        	parent2id=population.get(random1);
+        }
+        else {parent2id=population.get(random2);}
+    	
+        Map.Entry< Vector<Vertex> ,Vector<Vertex>> entry = new AbstractMap.SimpleEntry< Vector<Vertex> ,Vector<Vertex>>(parent1id, parent2id);
         return entry;
     }
-    
-    
-    
-    public  Map.Entry<Integer,Integer> bestparent(Vector<Vertex> chromosom)
+    	    
+    public Map.Entry< Vector<Vertex> ,Vector<Vertex>> bestparent(Vector<Vector<Vertex> > population)
 	{
-		Random generator = new Random();
-		 int random1=generator.nextInt(100);
-		 int random2=generator.nextInt(100);
-		 //wybieramy randomowych rodziców na początek
-		 while(chromosom.get(random1).id==150)
+    	//wybieramy randomowego parenta
+    	//potem iterujemy po populacji, porównujemy kto ma więcej
+    	 Random generator = new Random();
+    	 int random1=generator.nextInt(population.size());
+		 int random2=generator.nextInt(population.size());
+		 Vector<Vertex> parent1id=population.get(random1);
+	     Vector<Vertex> parent2id=population.get(random2);
+		 
+	     int j=random1;
+		 for(int i=0;i<population.size();i++)
 		 {
-			 random1=generator.nextInt(100);
+			 if(d.silentbadNeighbour(parent1id)<d.silentbadNeighbour(population.get(i)))
+			 {
+				 parent1id=population.get(i);
+				 j=i;
+			 }
 		 }
-		 while(chromosom.get(random2).id==150)
-		 {
-			 random2=generator.nextInt(100);
-		 }
-		int parent1id=random1;
-		int parent2id=random2; 
-		//liczba dobrych sąsiadów dla każdego wierzchołka-rodzica
-		int goodneighbour1=0;
-		int goodneighbour2=0;
-		int amount=0;
-		//naliczamy sąśiadów
-		for(int j=0; j<chromosom.size();j++)
-		{
-			for (int d =0;d<chromosom.get(j).sasiedzi.size();d++)
-	    	{
-			 if(chromosom.get(chromosom.get(j).sasiedzi.get(d)).kolor!=chromosom.get(j).kolor) amount++;
-
-	    	}
-			if (amount>goodneighbour1)
-			{
-				goodneighbour1=amount;
-				parent1id=j;
-			}
-		}
-		for(int j=0; j<chromosom.size();j++)
-		{
-			for (int d =0;d<chromosom.get(j).sasiedzi.size();d++)
-	    	{
-			 if(chromosom.get(chromosom.get(j).sasiedzi.get(d)).kolor!=chromosom.get(j).kolor) amount++;
-	    	}
-			if ((amount>goodneighbour2)&& j!=parent1id)
-			{
-				goodneighbour2=amount;
-				parent2id=j;
-			}
 		
-		}
-		Map.Entry<Integer,Integer> entry = new AbstractMap.SimpleEntry< Integer, Integer>(parent1id, parent2id);
-		return entry;		
+		 for(int i=0;i<population.size();i++)
+		 {
+			 //zostaje rodzicem tylko jeśli jest inny od pierwszego rodzica
+			 if((i!=j)&&(d.silentbadNeighbour(parent2id)<d.silentbadNeighbour(population.get(i))))
+			 {
+				 parent2id=population.get(i);
+			 }
+		 }
+    	
+		 Map.Entry< Vector<Vertex> ,Vector<Vertex>> entry = new AbstractMap.SimpleEntry< Vector<Vertex> ,Vector<Vertex>>(parent1id, parent2id);
+		 return entry;
 	}
     
-    
   //roulette
-  		public  Map.Entry<Integer,Integer> fitparent(Vector<Vertex> chromosom)
+    public Map.Entry< Vector<Vertex> ,Vector<Vertex>> fitparent(Vector<Vector<Vertex> > population)
   		{
-  			Random generator = new Random();
-  			int parent1id=0;
-  			int parent2id=0;
-  			int sumfitness=0;
-  			//przeiterować po kazdym i zsumować ich fitness (liczbę dobrych sąsiadów)
-  			for(int j=0; j<chromosom.size();j++)
-  			{
-  				for (int d =0;d<chromosom.get(j).sasiedzi.size();d++)
-  		    	{
-  				 if(chromosom.get(chromosom.get(j).sasiedzi.get(d)).kolor!=chromosom.get(j).kolor) sumfitness++;
-  				 
-  		    	}
-  				
-  			}			
-  			//jeżeli sumfitness=0 to nie możemy dzielić!
-  			if (sumfitness==0) 
-  			{
-  				parent1id=generator.nextInt(100);
-  				parent2id=generator.nextInt(100);
-  		        while(chromosom.get(parent1id).id==150)
-  		        {
-  		        	parent1id=generator.nextInt(100);
-  		        }
-  		        while(chromosom.get(parent2id).id==150 || parent2id==parent1id )
-  		        {
-  		        	parent2id=generator.nextInt(100);
-  		        }
-  				
-  			}
-  			//jezeli !=0
-  			else
-  			{
-  			//TODO
-  				//dwa razy: wybieram losową liczbę z sumfitness, iteruję dodając znowu sąsiadów i jak dojdę
-  				//do tej liczby to wybieram to ID
-  				
-  				parent1id=generator.nextInt(sumfitness);
-  				parent2id=generator.nextInt(sumfitness);
-  				if (parent1id==0) parent1id++;
-  				if (parent2id==0) parent1id++;
-  				sumfitness=0;
-  				for(int j=0; j<chromosom.size();j++)
-  	  			{
-  	  				for (int d =0;d<chromosom.get(j).sasiedzi.size();d++)
-  	  		    	{
-  	  				 if(chromosom.get(chromosom.get(j).sasiedzi.get(d)).kolor!=chromosom.get(j).kolor) sumfitness++;
-  	  				 if(parent1id==sumfitness) parent1id=j;
-  	  				 if(parent2id==sumfitness) parent2id=j;
-  	  		    	} 	  				
-  	  			}
-  			}
-  			Map.Entry<Integer,Integer> entry = new AbstractMap.SimpleEntry< Integer, Integer>(parent1id, parent2id);
-  			return entry;
-  		}
-    
-    
-    
-    
+    	 Vector<Vertex> parent1id=null;
+    	 Vector<Vertex> parent2id=null;
+		int sumfitness=0;
+		int[] fit = new int[population.size()]; //tablica fitness dla każdego chromosoma
+    	
+    	
+    	//przeiterować po każdym i policzyć ich wspólną fitness?
+    	//czyli to stare x razy i zsumowane?
+    	
+    	for(int f=0; f<population.size();f++) //dla każdego chromosoma w populcji
+    	{
+    		Vector<Vertex> chromosom =population.get(f);
+    		sumfitness=0;
+    	//dla każdego wierzchołka w chromosomie
+    	
+    		
+    			//stare do policzenia sumfitness jednego chromosoma
+    			//przeiterować po kazdym i zsumować ich fitness (liczbę dobrych sąsiadów)
+      			for(int j=0; j<chromosom.size();j++)
+      			{
+      				for (int d =0;d<chromosom.get(j).sasiedzi.size();d++)
+      		    	{
+      				 if(chromosom.get(chromosom.get(j).sasiedzi.get(d)).kolor!=chromosom.get(j).kolor) sumfitness++; 
+      		    	}				
+      			}
+    			fit[f]=sumfitness;	
+    	}
+    	sumfitness=0;//teraz to posłuży do policzenia sumy sum
+    	//liczymy sumę całkowitą
+    	for(int f=0; f<population.size();f++)
+    	{
+    		sumfitness=sumfitness+fit[f];
+    	}
+    	//dwa razy: wybieram losową liczbę z sumfitness, wybieram tego parenta w którego przedziale się znalazłam?
+    	Random generator = new Random();
+    	int random=generator.nextInt(sumfitness);
+    	int random1=generator.nextInt(sumfitness);
+    	//dwa parenty
+    	int pomoc=0;
+    	for(int f=0; f<population.size();f++)
+    	{
+    		pomoc=pomoc+fit[f];
+    		if (random<=pomoc) 
+    		{
+    			parent1id=population.get(f);
+    		}
+    		if (random1<=pomoc) 
+    		{
+    			parent2id=population.get(f);
+    		}
+    	}
+    	
+    	 Map.Entry< Vector<Vertex> ,Vector<Vertex>> entry = new AbstractMap.SimpleEntry< Vector<Vertex> ,Vector<Vertex>>(parent1id, parent2id);
+			return entry;	
+    }  
 }
