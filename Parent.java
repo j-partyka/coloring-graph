@@ -23,8 +23,8 @@ public class Parent {
         }
         else {parent1id=population.get(random2);}
         
-        random1=generator.nextInt(5);
-        random2=generator.nextInt(5);
+        random1=generator.nextInt(population.size());
+        random2=generator.nextInt(population.size());
         
         if(d.silentbadNeighbour(population.get(random1))<d.silentbadNeighbour(population.get(random2))) 
         {

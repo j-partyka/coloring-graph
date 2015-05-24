@@ -5,7 +5,6 @@ public class Display {
 
     public void graph(Vector<Vertex> chromosom) {
         for (int j = 0; j < chromosom.size(); j++) {
-            if (chromosom.get(j).id != 150) {
                 System.out.println("poczatek wierzchołka");
                 System.out.println("ID: " + chromosom.get(j).id);
                 System.out.println("Kolor: " + chromosom.get(j).kolor);
@@ -16,19 +15,27 @@ public class Display {
                 }
                 System.out.println("koniec wierzchołka");
                 System.out.println();
-            }
         }
     }
 
-    public void IdColor(Vector<Vertex> chromosom) {
+    public void IdColorChromosom(Vector<Vertex> chromosom) {
         for (int j = 0; j < chromosom.size(); j++) {
-            if (chromosom.get(j).id != 150) {
 //                System.out.println("poczatek wierzchołka");
                 System.out.println("ID: " + chromosom.get(j).id);
                 System.out.println("Kolor: " + chromosom.get(j).kolor);
 //                System.out.println("koniec wierzchołka");
                 System.out.println();
             }
+    }
+
+    public void IdColorPopulation(Vector<Vector<Vertex> > population) {
+        System.out.println("ONE        TWO        THREE         FOUR");
+        for (int j = 0; j < population.get(0).size(); j++) {
+//                System.out.println("poczatek wierzchołka");
+            System.out.println("ID1: " + population.get(0).get(j).id + "     ID2: " + population.get(1).get(j).id + "     ID3: " + population.get(2).get(j).id + "    ID4: " + population.get(3).get(j).id);
+            System.out.println("Kolor1: " + population.get(0).get(j).kolor + "   Kolor2: " + population.get(1).get(j).id + "  Kolor3: " + population.get(2).get(j).kolor + "  Kolor4: " + population.get(3).get(j).kolor);
+//                System.out.println("koniec wierzchołka");
+            System.out.println();
         }
     }
 
