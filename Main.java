@@ -7,42 +7,42 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Graph g = new Graph();
+        Graph g = new Graph("graf.txt");
         Vector<Vertex> chromosom = g.load();
-        Display d = new Display();
-        Parent p1 = new Parent();
-        //K - zrobiłam dwie pętle, ale można to zmieniać jak się chce
-        //for(int p = 0; p < 20000; p++) K
-        {
-        	//while zli sasiedzi!=0 K 
-        	//i tutaj kombinacje co Ola robi do wyboru użytkownika K
-        	
-        }
+    	Vector<Vector<Vertex> > population = new Vector<Vector<Vertex> >();
+        population.setSize(4);
         
-        for (int p = 0; p < 500; p++) {
-        	Map.Entry<Integer,Integer> parent=p1.fitparent(chromosom);
-            chromosom =Mutation.one(Crossover.onePoint(parent, chromosom), 6);
-            
-        }
-        for (int p = 0; p < 20000; p++) {
-        	Map.Entry<Integer,Integer> parent=p1.bestparent(chromosom);
-        	 chromosom =Mutation.one(Crossover.twoPoint(parent, chromosom),6);
-
-             if (d.silentbadNeighbour(chromosom)==0) 
+        for(int i=0;i<population.size();i++)
+    	{
+        	population.set(i, chromosom);
+    	}
+        
+        
+        Parent p1 = new Parent();
+        Display d = new Display();
+        for (int p = 0; p < 1000; p++) {
+        	//mutujemy,wybieramy,crossujemy, sprawdzamy chromosoma,ZNOWU(p++) mutujemy...
+        	//mutujemy jednego żeby mieć z niego kilka
+        	for(int i=0;i<population.size();i++)
+         	{
+             	population.set(i, Mutation.one(chromosom,10));
+         	}
+        	//parent i cross
+        	Map.Entry< Vector<Vertex> ,Vector<Vertex>> parent=p1.bestparent(population);  
+        	//do chromosoma wrzucamy tego który nam wyszedł z crossovera
+        	population=Crossover.twoPoint(parent, population); 
+        	 //sprawdzenie całej populacji
+        	for(int i=0;i<population.size();i++)
+         	{
+             if (d.silentbadNeighbour(population.get(i))==0) 
             	 {System.out.println("działa"+ p);
+            	 chromosom=population.get(i);
             	 break;
             	 
-            	 }
+            	 }     
+         	}
         }
-        
-        //a tutaj sprawdzenie
 
-        
-        //Map.Entry<Integer,Integer> parent=p1.fitnessparent(chromosom);
-        for (int p = 0; p < 1; p++) {
-        //chromosom=Crossover.twoPoint(parent, chromosom);
-        }
-        //d.graph(chromosom);
         d.goodNeighbour(chromosom);
         //d.IdColor(chromosom);
     }
