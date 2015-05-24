@@ -5,7 +5,6 @@ import java.util.Vector;
 
 
 public class Crossover {
-
     //A - one-point crossover
     //A - A single crossover point on both parents' organism strings is selected. A
     //A - All data beyond that point in either organism string is swapped between the two parent organisms. The resulting organisms are the children:
