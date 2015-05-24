@@ -13,7 +13,7 @@ public class Graph {
 
     public Vector<Vertex> load() {
         //Tworzymy listę wierzchołków grafu- "chromosom"
-        Vector<Vertex> chromosom = new Vector<Vertex>();
+        Vector<Vertex> chromosom = new Vector<>();
         //inicjalizujemy bo mi nie działało jak inaczej
         // próbowałam robić sąsiedztwa. do poprawki najwyżej
         for (int j = 0; j < 100; j++) {
@@ -61,7 +61,16 @@ public class Graph {
                 else i++;
             }
         }
-        return chromosom;
+        //
+        Vector<Vertex> goodChromosom = new Vector<>();
+        for (int j = 0; j < 100; j++){
+            Vertex newVertex = chromosom.get(j);
+            if(newVertex.id != 150){
+                goodChromosom.add(newVertex);
+            }
+        }
+
+        return goodChromosom;
         //koniec tworzenia grafu
     }
 }
