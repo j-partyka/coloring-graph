@@ -11,9 +11,8 @@ public class Parent {
     public Map.Entry< Vector<Vertex> ,Vector<Vertex>> random(Vector<Vector<Vertex> > population)
     {
     	//nowe :(
-    	Random generator = new Random();
-        int random1=generator.nextInt(population.size());
-        int random2=generator.nextInt(population.size());
+        int random1=new Random().nextInt(population.size());
+        int random2=new Random().nextInt(population.size());
         Vector<Vertex> parent1id;
         Vector<Vertex> parent2id;
         
@@ -23,8 +22,8 @@ public class Parent {
         }
         else {parent1id=population.get(random2);}
         
-        random1=generator.nextInt(population.size());
-        random2=generator.nextInt(population.size());
+        random1=new Random().nextInt(population.size());
+        random2=new Random().nextInt(population.size());
         
         if(d.silentbadNeighbour(population.get(random1))<d.silentbadNeighbour(population.get(random2))) 
         {
@@ -40,9 +39,9 @@ public class Parent {
 	{
     	//wybieramy randomowego parenta
     	//potem iterujemy po populacji, porównujemy kto ma więcej
-    	 Random generator = new Random();
-    	 int random1=generator.nextInt(population.size());
-		 int random2=generator.nextInt(population.size());
+    	
+    	 int random1=new Random().nextInt(population.size());
+		 int random2=new Random().nextInt(population.size());
 		 Vector<Vertex> parent1id=population.get(random1);
 	     Vector<Vertex> parent2id=population.get(random2);
 		 
@@ -106,9 +105,8 @@ public class Parent {
     		sumfitness=sumfitness+fit[f];
     	}
     	//dwa razy: wybieram losową liczbę z sumfitness, wybieram tego parenta w którego przedziale się znalazłam?
-    	Random generator = new Random();
-    	int random=generator.nextInt(sumfitness);
-    	int random1=generator.nextInt(sumfitness);
+    	int random=new Random().nextInt(sumfitness);
+    	int random1=new Random().nextInt(sumfitness);
     	//dwa parenty
     	int pomoc=0;
     	for(int f=0; f<population.size();f++)
