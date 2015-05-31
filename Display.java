@@ -50,8 +50,9 @@ public class Display {
         }
     }
 
-    /**
-     *
+     /**
+     * goodNeighbour - iteruje po wierzchołkach chromosomu i sumuje wierzchołki, które są sąsiadami i mają ten sam 
+     * kolor - czyli są w konflikcie. Wyświetla podsumowanie w postaci listy skonfliktowanych wierzchołków i ich ilości.
      * @param chromosom
      */
     public void goodNeighbour(Vector<Vertex> chromosom){
@@ -67,10 +68,11 @@ public class Display {
         System.out.println(pomoc +" - liczba niedobrych sąsiadów");
     }
 
-    /**
-     *
+   /**
+     * silentbadNeighbour -  iteruje po wierzchołkach chromosomu i sumuje wierzchołki, które są sąsiadami i mają ten sam 
+     * kolor - czyli są w konflikcie. Zwraca całkowitą liczbę konfliktów. Nic nie wyświetla. 
      * @param chromosom
-     * @return iloscBadNeighbour
+     * @return badneigboramount
      */
      public int silentbadNeighbour(Vector<Vertex> chromosom){
         int pomoc=0;
