@@ -1,66 +1,30 @@
-import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Vector;
 
-public class Main {
-//ID != 150
+public class Mutation {
 
-    public static void main(String[] args) {
-    	 Parent p1 = new Parent();
-         Display d = new Display();
-        Graph g = new Graph("graf.txt");
-        Vector<Vertex> chromosom = new Vector<Vertex>();
-        
-        
-    	Vector<Vector<Vertex> > population = new Vector<Vector<Vertex> >();
-        population.setSize(4);
-                    
-        
-        //identyczny graf wszędzie
-        for(int i=0;i<population.size();i++)
-    	{
-        	population.set(i, g.load());
-    	}
-        //wstępna mutacja kolorów bo tak
-        for(int i=0;i<population.size();i++)
-     	{
-        	for(int j=0;j<population.get(i).size();j++)
-        	{
-        		population.get(i).get(j).kolor=new Random().nextInt(5);
-        	}
-     	}
-       //zmienna zmienna służy do ucieczki z pętli bo głupia Kasia jest zbyt leniwa żeby ogarnąć break label;
-        int zmienna=0;
-        for (int p = 0; p < 20000; p++) {
-        	//mutujemy,wybieramy,crossujemy, sprawdzamy chromosoma,ZNOWU(p++) mutujemy...
-        	for(int i=0;i<population.size();i++)
-         	{
-             	population.set(i, Mutation.one(population.get(i),5));
-         	}
-        	//parent i cross
-        	Map.Entry< Vector<Vertex> ,Vector<Vertex>> parent=p1.random(population);  
-        	//do chromosoma wrzucamy tego który nam wyszedł z crossovera
-        	population=Crossover.onePoint(parent, population); 
-        	 //sprawdzenie całej populacji
-        	for(int i=0;i<population.size();i++)
-         	{
-             if (d.silentbadNeighbour(population.get(i))==0) 
-            	 {System.out.println("chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
-            	 chromosom=population.get(i);
-            	 zmienna=1;
-            	 break ;
-            	 }     
-         	}
-        	if (zmienna==1) break;
+    public static Vector<Vertex> one(Vector<Vertex> chromosom, int iloscKolorow){
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+        //sprawdzamy kazdy wierzchoĹ‚ek
+        for (int i  = 0; i < chromosom.size(); i++){
+            //tworzenie tablicy kolorĂłw
+            for (int j = 0; j < iloscKolorow; j++) {
+                colors.add(j);
+            }
+            //sprawdzanie sÄ…siadĂłw
+            for (int d = 0;d<chromosom.get(i).sasiedzi.size();d++){
+            	if(chromosom.get(chromosom.get(i).sasiedzi.get(d)).kolor==chromosom.get(i).kolor)  {
+                    if(colors.contains(chromosom.get(chromosom.get(i).sasiedzi.get(d)).kolor))   colors.remove((chromosom.get(chromosom.get(i).sasiedzi.get(d)).kolor));
+                }
+            }     
+            
+            //dodawanie koloru ranodomowego
+            chromosom.get(i).kolor = colors.get(new Random().nextInt(colors.size()));
+            colors.clear(); //dobrzE? czyszczę wszystko zanim znowu pododaję - K
         }
-        
-        for(int i=0;i<population.size();i++)
-     	{
-        	 //d.IdColorChromosom(population.get(i));
-        	//d.goodNeighbour(population.get(i));
-     	}
-        //d.IdColorChromosom(chromosom);
+        return chromosom;
     }
-
-
+    
+    
 }
