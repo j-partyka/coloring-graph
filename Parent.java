@@ -6,8 +6,12 @@ import java.util.Vector;
 //parents
 public class Parent {
 	 Display d = new Display();
-	
-	
+/**
+ * Random - wybiera dwa losowe chromosomy i pierwszym rodzicem zostaje ten, który jest "zdrowszy"
+ * czyli ma więcej dobrze pokolorowanych wierzchołków. Drugi rodzic zostaje wybrany poprzez kolejne losowanie.
+ * @param population
+ * @return parents
+ */
     public Map.Entry< Vector<Vertex> ,Vector<Vertex>> random(Vector<Vector<Vertex> > population)
     {
     	//nowe :(
@@ -34,7 +38,14 @@ public class Parent {
         Map.Entry< Vector<Vertex> ,Vector<Vertex>> entry = new AbstractMap.SimpleEntry< Vector<Vertex> ,Vector<Vertex>>(parent1id, parent2id);
         return entry;
     }
-    	    
+    /**
+     * Bestparent - wybieramy losowy wierzchołek jako rodzica. Iterujemy po wszystkich wierzchołkach i
+     * porównujemy z naszym rodzicem, jeżeli któryś ma więcej dobrze pokolorowanych wierzchołków, to staje	
+     * się rodzicem. Drugi rodzic jest wybierany tak samo, z tym warunkiem, że nie może być taki sam jak
+     * pierwszy rodzic.    
+     * @param population
+     * @return parents
+     */
     public Map.Entry< Vector<Vertex> ,Vector<Vertex>> bestparent(Vector<Vector<Vertex> > population)
 	{
     	//wybieramy randomowego parenta
@@ -69,6 +80,15 @@ public class Parent {
 	}
     
   //roulette
+    /**
+     *  Fitparent - dla każdego chromosoma w populacji obliczamy jego zdrowie - sumę dobrych sąsiadów dla każdego
+     *  wierzchołka. Następnie na podstawie tego liczymy sumę całkowitą zdrowia populacji. Wybieramy losową liczbę
+     *  z przedziału od jeden do sumy całkowitej populacji. Po kolei dodajemy zdrowie kolejnych chromosomów, aż dojdziemy
+     *  do liczby większej od wylosowanej - chromosom, dla którego obliczyliśmy sumę zdrowia, staje się rodzicem. 
+     *  Drugi rodzic jest obliczany analogicznie.
+     * @param population
+     * @return parents
+     */
     public Map.Entry< Vector<Vertex> ,Vector<Vertex>> fitparent(Vector<Vector<Vertex> > population)
   		{
     	 Vector<Vertex> parent1id=null;
