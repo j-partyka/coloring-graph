@@ -1,0 +1,160 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[polish]{babel}
+\usepackage[MeX]{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{times}
+%\usepackage{graphicx}
+%\usepackage{anysize}
+%\usepackage{tikz}
+%\usetikzlibrary{calc,through,backgrounds,positioning}
+%\usepackage{anysize}
+%\usepackage{stmaryrd}
+%\usepackage{amssymb}
+%\usepackage{amsthm}
+%\marginsize{3cm}{3cm}{3cm}{3cm}
+%\usepackage{amsmath}
+%\usepackage{color}
+%\usepackage{listings}
+%\usepackage{enumerate}
+%\lstloadlanguages{Ada,C++}
+
+
+
+\begin{document}	
+% \noindent -  w tym akapicie nie bedzie wciecia
+% \ indent - to jest aut., ale powoduje ze jest wciecie
+% \begin{flushleft}, flushright, center - wyrownianie akapitu
+% \textbf{pogrubiany tekst}
+% \textit{kursywa} 
+% 					STRONY 
+%  http://www.codecogs.com/latex/eqneditor.php 
+%  http://www.matematyka.pl/latex.htm
+% 
+\begin{titlepage}
+	
+	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+	
+	\center % Center everything on the page
+	
+	%----------------------------------------------------------------------------------------
+	%	HEADING SECTIONS
+	%----------------------------------------------------------------------------------------
+	
+	\textsc{\LARGE Akademia Górniczo-Hutnicza im. Stanisława Staszica}\\[1.5cm] % Name of your university/college
+	\textsc{\Large Kraków}\\[0.5cm] % Major heading such as course name
+	\textsc{\large }\\[0.5cm] % Minor heading such as course title
+	
+	%----------------------------------------------------------------------------------------
+	%	TITLE SECTION
+	%----------------------------------------------------------------------------------------
+	
+	\HRule \\[0.4cm]
+	{ \huge \bfseries Problem kolorowania wierzchołkowego grafu}\\[0.3cm] % Title of your document
+	\HRule \\[1.5cm]
+	
+	%----------------------------------------------------------------------------------------
+	%	AUTHOR SECTION
+	%----------------------------------------------------------------------------------------
+	
+	
+	% If you don't want a supervisor, uncomment the two lines below and remove the section above
+	\Large \emph{Autorzy:}\\
+	Katarzyna \textsc{Kosiak} \\% Your name
+	Aleksandra \textsc{Pierzchała}\\ % Your name
+	Joanna \textsc{Roczniak}\\[3cm]\ % Your name
+	
+	%----------------------------------------------------------------------------------------
+	%	DATE SECTION
+	%----------------------------------------------------------------------------------------
+	
+	{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+	
+	%----------------------------------------------------------------------------------------
+	%	LOGO SECTION
+	%----------------------------------------------------------------------------------------
+	
+	%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	
+	%----------------------------------------------------------------------------------------
+	
+	\vfill % Fill the rest of the page with whitespace
+	
+\end{titlepage}
+
+%SPIS TRESI
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+\tableofcontents
+\vfill
+
+%SEKCJE
+%opis zagadnienia, temat, problem, dlaczego chcemy to rozwiązacyać metodą ewolucyjnę
+%jakie są metody rozwiącania problemu, przegląd literatury,
+%proponowane rozwiązania (spójność)
+%czym się inspierowałyśmy
+%
+%
+%
+
+\section{Wstęp}
+\section{Opis zagadnienia}
+
+This is the first section.
+
+Lorem  ipsum  dolor  sit  amet,  consectetuer  adipiscing  
+elit.   Etiam  lobortisfacilisis sem.  Nullam nec mi et 
+neque pharetra sollicitudin.  Praesent imperdietmi nec ante. 
+Donec ullamcorper, felis non sodales...
+
+\section{Algorytm genetyczny}
+\addcontentsline{toc}{section}{Powód zastosowania}
+\section*{Powód zastosowania}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+\addcontentsline{toc}{section}{Ogólny opis algorytmu}
+\section*{Ogólny opis algorytmu}
+
+\section{Metody rozwiązania problemu}
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+\addcontentsline{toc}{section}{Operator selekcji}
+\section*{Operator selekcji}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+\addcontentsline{toc}{section}{Operator krzyżowania}
+\section*{Operator krzyżowania}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+\addcontentsline{toc}{section}{Operator mutacji}
+\section*{Operator mutacji}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+\section*{Podsumowanie}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+\section{Testy}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+\section{Literatura}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+%to trzeba zrobić na podstawie zadania z latexa (9?) z odno
+\end{document}
