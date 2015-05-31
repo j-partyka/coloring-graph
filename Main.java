@@ -26,22 +26,26 @@ public class Main {
      	{
         	for(int j=0;j<population.get(i).size();j++)
         	{
-        		population.get(i).get(j).kolor=new Random().nextInt(5);
+        		population.get(i).get(j).kolor=new Random().nextInt(7);
         	}
      	}
        //zmienna zmienna służy do ucieczki z pętli bo głupia Kasia jest zbyt leniwa żeby ogarnąć break label;
         int zmienna=0;
         for (int p = 0; p < 20000; p++) {
         	//mutujemy,wybieramy,crossujemy, sprawdzamy chromosoma,ZNOWU(p++) mutujemy...
+        
+        	//parent i cross
+        	Map.Entry< Vector<Vertex> ,Vector<Vertex>> parent=p1.bestparent(population);  
+        	//do chromosoma wrzucamy tego który nam wyszedł z crossovera
+        	population=Crossover.onePoint(parent, population);
+        	//mutacja
         	for(int i=0;i<population.size();i++)
          	{
-             	population.set(i, Mutation.one(population.get(i),5));
+             	population.set(i, Mutation.one(population.get(i),7));
          	}
-        	//parent i cross
-        	Map.Entry< Vector<Vertex> ,Vector<Vertex>> parent=p1.random(population);  
-        	//do chromosoma wrzucamy tego który nam wyszedł z crossovera
-        	population=Crossover.onePoint(parent, population); 
         	 //sprawdzenie całej populacji
+        	
+        	
         	for(int i=0;i<population.size();i++)
          	{
              if (d.silentbadNeighbour(population.get(i))==0) 
