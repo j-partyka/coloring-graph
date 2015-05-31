@@ -1,10 +1,10 @@
+
 import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Main {
-//ID != 150
-
+	static int  colours=6;
     public static void main(String[] args) {
     	 Parent p1 = new Parent();
          Display d = new Display();
@@ -26,7 +26,7 @@ public class Main {
      	{
         	for(int j=0;j<population.get(i).size();j++)
         	{
-        		population.get(i).get(j).kolor=new Random().nextInt(7);
+        		population.get(i).get(j).kolor=new Random().nextInt(colours);
         	}
      	}
        //zmienna zmienna służy do ucieczki z pętli bo głupia Kasia jest zbyt leniwa żeby ogarnąć break label;
@@ -41,7 +41,7 @@ public class Main {
         	//mutacja
         	for(int i=0;i<population.size();i++)
          	{
-             	population.set(i, Mutation.one(population.get(i),7));
+             	population.set(i, Mutation.one(population.get(i),colours));
          	}
         	 //sprawdzenie całej populacji
         	
