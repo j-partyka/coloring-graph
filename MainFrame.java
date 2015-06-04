@@ -986,7 +986,8 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         GraphDisp gd = new GraphDisp();
         gd.pack();
-        gd.setVisible(true);
+        //gd.setVisible(true);
+        gd.showGraph();
     }                                          
 /**/
     /**
