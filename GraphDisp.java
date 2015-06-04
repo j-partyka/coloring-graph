@@ -37,10 +37,10 @@ public class GraphDisp extends javax.swing.JFrame {
                 return "E"+edgeCount++;
             }
         };
-    /*}
+    }
     
     void showGraph()
-    {*/
+    {
         GraphDisp sgv = new GraphDisp();
         // Layout<V, E>, VisualizationViewer<V,E>
         Layout<Integer, String> layout = new StaticLayout(sgv.g);
