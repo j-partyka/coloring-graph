@@ -1,4 +1,3 @@
-//import java.awt.Color;
 import java.io.File;
 import java.util.*;
 import javax.swing.JFileChooser;
@@ -14,10 +13,11 @@ import javax.swing.JFileChooser;
  */
 public class MainFrame extends javax.swing.JFrame {
     
-    private int slc=1, crv=1, mtn=1;
+    private int slc=1, crv=1, mtn=1, slc2=1, crv2=1, mtn2=1;
     private File file;
-    private String filename = "graf.txt";
+    private String filename = "graf.txt";   
     
+    static int colours = 6;
 
     /**
      * Creates new form MainFrame
@@ -39,6 +39,9 @@ public class MainFrame extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         fileChooser = new javax.swing.JFileChooser();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
         selection1 = new javax.swing.JRadioButton();
         selection2 = new javax.swing.JRadioButton();
         crossover1 = new javax.swing.JRadioButton();
@@ -54,6 +57,26 @@ public class MainFrame extends javax.swing.JFrame {
         selection3 = new javax.swing.JRadioButton();
         crossover3 = new javax.swing.JRadioButton();
         crossover4 = new javax.swing.JRadioButton();
+        selection2label = new javax.swing.JLabel();
+        selection21 = new javax.swing.JRadioButton();
+        selection22 = new javax.swing.JRadioButton();
+        selection23 = new javax.swing.JRadioButton();
+        crossover2label = new javax.swing.JLabel();
+        crossover21 = new javax.swing.JRadioButton();
+        crossover22 = new javax.swing.JRadioButton();
+        crossover23 = new javax.swing.JRadioButton();
+        crossover24 = new javax.swing.JRadioButton();
+        mutation2label = new javax.swing.JLabel();
+        mutation21 = new javax.swing.JRadioButton();
+        wielkoscPopulacji = new javax.swing.JSpinner();
+        wielkoscPopulacjiLabel = new javax.swing.JLabel();
+        liczbaKolorowLabel = new javax.swing.JLabel();
+        liczbaKolorow = new javax.swing.JSpinner();
+        mutation2 = new javax.swing.JRadioButton();
+        mutation3 = new javax.swing.JRadioButton();
+        mutation22 = new javax.swing.JRadioButton();
+        mutation23 = new javax.swing.JRadioButton();
+        grafButton = new javax.swing.JToggleButton();
 
         fileChooser.setFileFilter(new FileFilter());
 
@@ -95,7 +118,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         buttonGroup3.add(mutation1);
         mutation1.setSelected(true);
-        mutation1.setText("Jedyna możliwa");
+        mutation1.setText("One");
         mutation1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mutation1ActionPerformed(evt);
@@ -106,6 +129,11 @@ public class MainFrame extends javax.swing.JFrame {
         gotoweButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 gotoweButtonMouseReleased(evt);
+            }
+        });
+        gotoweButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gotoweButtonActionPerformed(evt);
             }
         });
 
@@ -159,45 +187,194 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        selection2label.setText("Druga metoda selection:");
+
+        buttonGroup4.add(selection21);
+        selection21.setSelected(true);
+        selection21.setText("Random");
+        selection21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selection21ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup4.add(selection22);
+        selection22.setText("Best Parent");
+        selection22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selection22ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup4.add(selection23);
+        selection23.setText("Fit Parent");
+        selection23.setToolTipText("");
+        selection23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selection23ActionPerformed(evt);
+            }
+        });
+
+        crossover2label.setText("Druga metoda crossover:");
+
+        buttonGroup5.add(crossover21);
+        crossover21.setSelected(true);
+        crossover21.setText("One Point");
+        crossover21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crossover21ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup5.add(crossover22);
+        crossover22.setText("Two Point");
+        crossover22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crossover22ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup5.add(crossover23);
+        crossover23.setText("Uniform");
+        crossover23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crossover23ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup5.add(crossover24);
+        crossover24.setText("Arithmetic");
+        crossover24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crossover24ActionPerformed(evt);
+            }
+        });
+
+        mutation2label.setText("Druga metoda mutacji:");
+
+        buttonGroup6.add(mutation21);
+        mutation21.setSelected(true);
+        mutation21.setText("One");
+        mutation21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mutation21ActionPerformed(evt);
+            }
+        });
+
+        wielkoscPopulacji.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(4), Integer.valueOf(4), null, Integer.valueOf(1)));
+
+        wielkoscPopulacjiLabel.setText("Wielkość populacji:");
+
+        liczbaKolorowLabel.setText("Liczba kolorów:");
+
+        liczbaKolorow.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(5), Integer.valueOf(2), null, Integer.valueOf(1)));
+
+        buttonGroup3.add(mutation2);
+        mutation2.setText("Transposition");
+        mutation2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mutation2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup3.add(mutation3);
+        mutation3.setText("First Fit");
+        mutation3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mutation3ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup6.add(mutation22);
+        mutation22.setText("Transposition");
+        mutation22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mutation22ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup6.add(mutation23);
+        mutation23.setText("First Fit");
+        mutation23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mutation23ActionPerformed(evt);
+            }
+        });
+
+        grafButton.setText("Generuj graf");
+        grafButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grafButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selection2)
+                            .addComponent(selection1)
+                            .addComponent(selection3)
+                            .addComponent(selectionLabel)
+                            .addComponent(selection23)
+                            .addComponent(selection22)
+                            .addComponent(selection21)
+                            .addComponent(selection2label))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(crossoverLabel)
+                                    .addComponent(crossover1)
+                                    .addComponent(crossover2)
+                                    .addComponent(crossover3)
+                                    .addComponent(crossover4))
+                                .addGap(17, 164, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(crossover2label)
+                                    .addComponent(crossover21)
+                                    .addComponent(crossover22)
+                                    .addComponent(crossover23)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(gotoweButton)
+                                        .addComponent(crossover24)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(grafButton)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(mutation23)
+                                            .addComponent(mutation22)
+                                            .addComponent(mutation21)
+                                            .addComponent(mutation2label)
+                                            .addComponent(mutationLabel)
+                                            .addComponent(mutation1)
+                                            .addComponent(mutation2)
+                                            .addComponent(mutation3))
+                                        .addGap(0, 13, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(liczbaKolorowLabel)
+                            .addComponent(wielkoscPopulacjiLabel)
+                            .addComponent(wielkoscPopulacji, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(plikButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(gotoweButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(selection2)
-                    .addComponent(selection1)
-                    .addComponent(selection3)
-                    .addComponent(selectionLabel))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(crossover2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(crossover1)
-                                    .addComponent(crossoverLabel))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(mutationLabel)
-                                    .addComponent(mutation1))))
-                        .addContainerGap(53, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(crossover4)
-                            .addComponent(crossover3))
-                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,20 +392,53 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selection2)
-                    .addComponent(crossover2))
+                    .addComponent(crossover2)
+                    .addComponent(mutation2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(crossover3)
-                    .addComponent(selection3))
+                    .addComponent(selection3)
+                    .addComponent(mutation3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(crossover4)
-                .addGap(24, 24, 24)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection2label)
+                    .addComponent(crossover2label)
+                    .addComponent(mutation2label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection21)
+                    .addComponent(crossover21)
+                    .addComponent(mutation21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection22)
+                    .addComponent(crossover22)
+                    .addComponent(mutation22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection23)
+                    .addComponent(crossover23)
+                    .addComponent(mutation23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(crossover24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(wielkoscPopulacjiLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(wielkoscPopulacji, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(liczbaKolorowLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(plikButton)
-                    .addComponent(gotoweButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(gotoweButton)
+                    .addComponent(grafButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -249,7 +459,6 @@ public class MainFrame extends javax.swing.JFrame {
         slc=2;
     }                                          
 
-    
     private void crossover2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         crv=2;
@@ -263,109 +472,415 @@ public class MainFrame extends javax.swing.JFrame {
     private void gotoweButtonMouseReleased(java.awt.event.MouseEvent evt) {                                           
         // TODO add your handling code here:
         textArea.setText("lalala");
-        Graph g = new Graph(filename);
-        Vector<Vertex> chromosom;
-        chromosom = g.load();
+        Graph1 g = new Graph1(filename);
+        Vector<Vertex> chromosom = new Vector<Vertex>();
         Parent p1 = new Parent();
+        Display d = new Display();
+        Vector<Vector<Vertex> > population = new Vector<Vector<Vertex> >();
+        population.setSize((int) wielkoscPopulacji.getValue());
         
-        for (int p = 0; p < 1300; p++) {
-            
+        for(int i=0; i<population.size(); i++)
+        {
+                population.set(i, g.load());
+        }
+        
+        for(int i=0; i<population.size(); i++)
+        {
+            for(int j=0; j<population.get(i).size(); j++)
+            {
+                population.get(i).get(j).kolor = new Random().nextInt(5);
+            }
+        }
+        
+        //while(((d.silentBadNeighbour(chromosom))/(chromosom.size()))> 0.2) //ZMIENIC
+        for(int p=0; p<5000; p++)
+        {   
             if(slc == 1)
             {
-                Map.Entry<Integer,Integer> parent = p1.random(chromosom);
+                Map.Entry<Vector<Vertex>, Vector<Vertex>> parent = p1.random(population);
 
                 if(crv == 1)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.onePoint(parent, chromosom), 15);
-                    //else if(mtn == 2) Mutation.two...
-                    textArea.setText("Selection - Random\nCrossover - One Point");
+                    population = Crossover.onePoint(parent, population);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - One Point\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - One Point\nMutation - First Fit");
+                    }
                 }
 
                 else if(crv == 2)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.twoPoint(parent, chromosom), 15);
-                    textArea.setText("Selection - Random\nCrossover - Two Point");
+                    population = Crossover.twoPoint(parent, population);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - First Fit");
+                    }
                 }
                 
                 else if(crv == 3)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.uniform(parent, chromosom), 15);
-                    textArea.setText("Selection - Random\nCrossover - Uniform");
+                    population = Crossover.uniform(parent, population);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - First Fit");
+                    }
                 }
                 
                 else if(crv == 4)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.arithmetic(parent, chromosom), 15);
-                    textArea.setText("Selection - Random\nCrossover - Arithmetic");
+                    population = Crossover.arithmetic(parent, population, colours);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - First Fit");
+                    }
                 }
             }
 
             else if(slc == 2)
             {
-                Map.Entry<Integer,Integer> parent=p1.bestparent(chromosom);
+                Map.Entry<Vector<Vertex>, Vector<Vertex>> parent = p1.bestparent(population);
 
                 if(crv == 1)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.onePoint(parent, chromosom), 15);
-                    //else if(mtn == 2) Mutation.two...
-                    textArea.setText("Selection - Best Parent\nCrossover - One Point");
+                    population = Crossover.onePoint(parent, population);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - First Fit");
+                    }
                 }
 
                 else if(crv == 2)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.twoPoint(parent, chromosom), 15);
-                    textArea.setText("Selection - Best Parent\nCrossover - Two Point");
+                    population = Crossover.twoPoint(parent, population);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - First Fit");
+                    }
                 }
                 
                 else if(crv == 3)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.uniform(parent, chromosom), 15);
-                    textArea.setText("Selection - Best Parent\nCrossover - Uniform");
+                    population = Crossover.uniform(parent, population);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - First Fit");
+                    }
                 }
                 
                 else if(crv == 4)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.arithmetic(parent, chromosom), 15);
-                    textArea.setText("Selection - Best Parent\nCrossover - Arithmetic");
+                    population = Crossover.arithmetic(parent, population, colours);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - First Fit");
+                    }
                 }
             }
-            
+                
             else if(slc==3)
             {
-                Map.Entry<Integer,Integer> parent=p1.fitparent(chromosom);
-
+                Map.Entry<Vector<Vertex>, Vector<Vertex>> parent = p1.fitparent(population);
+                
                 if(crv == 1)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.onePoint(parent, chromosom), 15);
-                    //else if(mtn == 2) Mutation.two...
-                    textArea.setText("Selection - Fit Parent\nCrossover - One Point");
+                    population = Crossover.onePoint(parent, population);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - First Fit");
+                    }
                 }
 
                 else if(crv == 2)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.twoPoint(parent, chromosom), 15);
-                    textArea.setText("Selection - Fit Parent\nCrossover - Two Point");
-                } 
+                    population = Crossover.twoPoint(parent, population);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - First Fit");
+                    }
+                }
                 
                 else if(crv == 3)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.uniform(parent, chromosom), 15);
-                    textArea.setText("Selection - Fit Parent\nCrossover - Uniform");
+                    population = Crossover.uniform(parent, population);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - First Fit");
+                    }
                 }
                 
                 else if(crv == 4)
                 {
-                    if(mtn == 1) Mutation.one(Crossover.arithmetic(parent, chromosom), 15);
-                    textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic");
+                    population = Crossover.arithmetic(parent, population, colours);
+                    if(mtn == 1) 
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.one(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - One");
+                    }
+                    else if(mtn == 2)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.transposition(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Transposition");
+                    }
+                    
+                    else if(mtn == 3)
+                    {
+                        for(int i=0; i<population.size(); i++)
+                        {
+                            population.set(i, Mutation.firstFit(population.get(i), colours));
+                        }
+                        textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - First Fit");
+                    }
                 }
-            }
-            
+            }            
         }
-               
-        Display d = new Display();
+        
+        /*for(int p=0; p<5000; p++)
+        {
+            //TU ZNOWU TE SAME IFY ALE Z BREAK'AMI
+        }*/
 
         d.graph(chromosom);
         d.goodNeighbour(chromosom);
+        
+        System.out.println("koniec");
+       
     }                                          
 
     private void plikButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -398,6 +913,80 @@ public class MainFrame extends javax.swing.JFrame {
     private void crossover4ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         crv = 4;
+    }                                          
+
+    private void selection21ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        slc2 = 1;
+    }                                           
+
+    private void selection22ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        slc2 = 2;
+    }                                           
+
+    private void selection23ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        slc2 = 3;
+    }                                           
+
+    private void crossover21ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        crv2 = 1;
+    }                                           
+
+    private void crossover22ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        crv2 = 2;
+    }                                           
+
+    private void crossover23ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        crv2 = 3;
+    }                                           
+
+    private void crossover24ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        crv2 = 4;
+    }                                           
+
+    private void mutation21ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        mtn2 = 1;
+    }                                          
+
+    private void gotoweButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+        /* GraphDisp gd = new GraphDisp();
+        gd.pack();
+        gd.setVisible(true); */
+    }                                            
+
+    private void mutation2ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        mtn = 2;
+    }                                         
+
+    private void mutation3ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        mtn = 3;
+    }                                         
+
+    private void mutation22ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        mtn2 = 2;
+    }                                          
+
+    private void mutation23ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        mtn2 = 3;
+    }                                          
+
+    private void grafButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        GraphDisp gd = new GraphDisp();
+        gd.pack();
+        gd.setVisible(true);
     }                                          
 /**/
     /**
@@ -454,21 +1043,44 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JRadioButton crossover1;
     private javax.swing.JRadioButton crossover2;
+    private javax.swing.JRadioButton crossover21;
+    private javax.swing.JRadioButton crossover22;
+    private javax.swing.JRadioButton crossover23;
+    private javax.swing.JRadioButton crossover24;
+    private javax.swing.JLabel crossover2label;
     private javax.swing.JRadioButton crossover3;
     private javax.swing.JRadioButton crossover4;
     private javax.swing.JLabel crossoverLabel;
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JButton gotoweButton;
+    private javax.swing.JToggleButton grafButton;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner liczbaKolorow;
+    private javax.swing.JLabel liczbaKolorowLabel;
     private javax.swing.JRadioButton mutation1;
+    private javax.swing.JRadioButton mutation2;
+    private javax.swing.JRadioButton mutation21;
+    private javax.swing.JRadioButton mutation22;
+    private javax.swing.JRadioButton mutation23;
+    private javax.swing.JLabel mutation2label;
+    private javax.swing.JRadioButton mutation3;
     private javax.swing.JLabel mutationLabel;
     private javax.swing.JButton plikButton;
     private javax.swing.JRadioButton selection1;
     private javax.swing.JRadioButton selection2;
+    private javax.swing.JRadioButton selection21;
+    private javax.swing.JRadioButton selection22;
+    private javax.swing.JRadioButton selection23;
+    private javax.swing.JLabel selection2label;
     private javax.swing.JRadioButton selection3;
     private javax.swing.JLabel selectionLabel;
     private javax.swing.JTextArea textArea;
+    private javax.swing.JSpinner wielkoscPopulacji;
+    private javax.swing.JLabel wielkoscPopulacjiLabel;
     // End of variables declaration                   
 }
