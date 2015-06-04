@@ -2,11 +2,11 @@ import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class Graph {
+public class Graph1 {
     
     private String filename;
     
-    Graph(String filename)
+    Graph1(String filename)
     {
         this.filename = filename;
     }
