@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Vector;
 
 /**
- * CROSSOVER
+ * Crossover
  */
 public class Crossover {
 
@@ -14,18 +14,17 @@ public class Crossover {
      * a reszta wierzchołków jest kolorowana tamiki samymi kolorami jak rodzic B miał po crosspoincie.
      * Kolejne dziecko jest kolorowane odwrotnie, na początku ma kolory rodzica B, a potem kolory od rodzica A.
      * Połowa dzieci w populacji ma taki sam kolor.
-     * @param parents
-     * @param population
-     * @return newPopulation
+     * @param parents element mapy(watość,klucz) zawierający dwa chromosomy - rodziców
+     * @param population wektor chromosomów (wektorów wierzchołków)
+     * @return population - nowa populacja po zamianie kolorów
      */
 
     public static Vector<Vector<Vertex>> onePoint(Map.Entry<Vector<Vertex>, Vector<Vertex>> parents, Vector<Vector<Vertex>> population) {
 
-        Vector<Vector<Vertex>> newPopulation = population; //A - newPopulation - new population of Offspring
         int crosspoint = new Random().nextInt(population.get(1).size());  //A - generowanie losowej liczby crosspoint z ilości wierzchołków w chromosomie
 
         for (int j = 0; j < population.size(); j++) {
-            Vector<Vertex> child = newPopulation.get(j); //A - child - jeden chromosom z populacji Offspring
+            Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
             switch (j % 2) {
                 case 0: //kolorowanie dwójki dzieci tak samo
                     for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
@@ -40,7 +39,7 @@ public class Crossover {
                         }
                         child.set(i, temp);
                     }
-                    newPopulation.set(j, child);
+                    population.set(j, child);
                     break;
                 case 1: //kolorowanie dwójki dzieci odwrotnie do poprzedniego
                     for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
@@ -55,11 +54,11 @@ public class Crossover {
                         }
                         child.set(i, temp);
                     }
-                    newPopulation.set(j, child);
+                    population.set(j, child);
                     break;
             }
         }
-        return newPopulation;
+        return population;
     }
 
     /**
@@ -70,16 +69,12 @@ public class Crossover {
      * Kolejne dziecko odwrotnie, na początku kolory od rodzica B, potem A, potem znowu B.
      * Połowa dzieci w populacji ma taki sam kolor.
      *
-     * @param parents
-     * @param population
-     * @return
+     * @param parents element mapy(watość,klucz) zawierający dwa chromosomy - rodziców
+     * @param population wektor chromosomów (wektorów wierzchołków)
+     * @return population - nowa populacja po zamianie kolorów
      */
-    //A - Two-point crossover
-    //A - Two-point crossover calls for two points to be selected on the parent organism strings.
-    //A - Everything between the two points is swapped between the parent organisms, rendering two child organisms:
     public static Vector<Vector<Vertex>> twoPoint(Map.Entry<Vector<Vertex>, Vector<Vertex>> parents, Vector<Vector<Vertex>> population) {
 
-        Vector<Vector<Vertex>> newPopulation = population; //A - newPopulation - new population of Offspring
         int chromosomSize = population.elementAt(1).size();
         int crosspoint1 = new Random().nextInt(chromosomSize);
         int crosspoint2;
@@ -88,7 +83,7 @@ public class Crossover {
         } while (crosspoint1 >= crosspoint2); //A - ustawianie crosspoint1 na mniejszy, a crosspoint2 na większy
 
         for (int j = 0; j < population.size(); j++) {
-            Vector<Vertex> child = newPopulation.get(j); //A - child - jeden chromosom z populacji Offspring
+            Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
             switch (j % 2) {
                 case 0: //kolorowanie dwójki dzieci tak samo
                     for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
@@ -103,7 +98,7 @@ public class Crossover {
                         }
                         child.set(i, temp);
                     }
-                    newPopulation.set(j, child);
+                    population.set(j, child);
                     break;
                 case 1: //kolorowanie dwójki dzieci tak samo
                     for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
@@ -118,25 +113,23 @@ public class Crossover {
                         }
                         child.set(i, temp);
                     }
-                    newPopulation.set(j, child);
+                    population.set(j, child);
                     break;
             }
         }
-        return newPopulation;
+        return population;
     }
 
     /**
      * Uniform - kolory są randomowo kopiowane albo od rodzica A, albo od rodzica B.
-     * @param parents
-     * @param population
-     * @return
+     * @param parents element mapy(watość,klucz) zawierający dwa chromosomy - rodziców
+     * @param population wektor chromosomów (wektorów wierzchołków)
+     * @return population - nowa populacja po zamianie kolorów
      */
     public static Vector<Vector<Vertex>> uniform(Map.Entry<Vector<Vertex>, Vector<Vertex>> parents, Vector<Vector<Vertex>> population) {
 
-        Vector<Vector<Vertex>> newPopulation = population; //A - newPopulation - new population of Offspring
-
         for (int j = 0; j < population.size(); j++) {
-            Vector<Vertex> child = newPopulation.get(j); //A - child - jeden chromosom z populacji Offspring
+            Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
             switch (j % 2) {
                 case 0: //kolorowanie dwójki dzieci tak samo
                     for (int i = 0; i < child.size(); i++) {
@@ -154,7 +147,7 @@ public class Crossover {
                         }
                         child.set(i, temp);
                     }
-                    newPopulation.set(j, child);
+                    population.set(j, child);
                     break;
                 case 1: //kolorowanie dwójki dzieci tak samo
                     for (int i = 0; i < child.size(); i++) {
@@ -172,28 +165,25 @@ public class Crossover {
                         }
                         child.set(i, temp);
                     }
-                    newPopulation.set(j, child);
+                    population.set(j, child);
                     break;
             }
         }
-        return newPopulation;
+        return population;
     }
 
     /**
      * Arithmetic - populacja jest tworzona przez arytmetyczne działania na kolorach rodziców.
      * Działanie - iloczyn kolorów rodziców modulo ilość kolorów występujących w danym grafie.
-     * @param parents
-     * @param population
-     * @param colors
-     * @return
+     * @param parents element mapy(watość,klucz) zawierający dwa chromosomy - rodziców
+     * @param population wektor chromosomów (wektorów wierzchołków)
+     * @param colors - ilość kolorów występujących w danym grafie
+     * @return population - nowa populacja po zamianie kolorów
      */
-    //A - Arithmetic crossover - some arithmetic operation is performed to make a new offspring
     public static Vector<Vector<Vertex>> arithmetic(Map.Entry<Vector<Vertex>, Vector<Vertex>> parents, Vector<Vector<Vertex>> population, int colors) {
 
-        Vector<Vector<Vertex>> newPopulation = population; //A - newPopulation - new population of Offspring
-
         for (int j = 0; j < population.size(); j++) {
-            Vector<Vertex> child = newPopulation.get(j); //A - child - jeden chromosom z populacji Offspring
+            Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
             for (int i = 0; i < child.size(); i++) {
                 int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
                 int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
@@ -201,8 +191,8 @@ public class Crossover {
                 temp.kolor = (kolor1 * kolor2) % colors; //modulo ilość kolorów występujących w danym grafie
                 child.set(i, temp);
             }
-            newPopulation.set(j, child);
+            population.set(j, child);
         }
-        return newPopulation;
+        return population;
     }
 }
