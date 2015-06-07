@@ -52,7 +52,7 @@ public class Mutation {
         ArrayList<Integer> colors = new ArrayList<>();
 
         Vertex badNeighbour = null; //wierzchołek, któremu będzie zmieniany kolor
-        ArrayList<Integer> numbersOfBadNeighbours = new ArrayList<>(); //i-ty el. listy zawiera ilość złych sąsiadów i-tego wierzchołka
+        ArrayList<Integer> badNeighboursArray = new ArrayList<>(); //i-ty el. listy zawiera ilość złych sąsiadów i-tego wierzchołka
         int badNeighbours; //ilość złych sąsiadów konkretnego wierzchołka
         int newColor;
         //sprawdzamy każdy wierzchołek w chromosomie
@@ -67,19 +67,19 @@ public class Mutation {
                     break;
                 }
             }
-            numbersOfBadNeighbours.add(i, badNeighbours);
+            badNeighboursArray.add(i, badNeighbours);
         }
-        int max = Collections.max(numbersOfBadNeighbours); //max - największa ilość złych sąsiadów jakie ma jeden z wierzchołków w chromosomie
-        int min = Collections.min(numbersOfBadNeighbours); //min - najmniejsza ilość złych sąsiadów jakie ma jeden z wierzchołków w chromosomie
+        int max = Collections.max(badNeighboursArray); //max - największa ilość złych sąsiadów jakie ma jeden z wierzchołków w chromosomie
+        int min = Collections.min(badNeighboursArray); //min - najmniejsza ilość złych sąsiadów jakie ma jeden z wierzchołków w chromosomie
         //indeks wierzchołka, któremu będzie zmieniany kolor
-        int indexBadNeighbour = numbersOfBadNeighbours.indexOf(max); // indeks wierzchołka, który ma najwięcej złych sąsiadów w chromosomie
+        int indexBadNeighbour = badNeighboursArray.indexOf(max); // indeks wierzchołka, który ma najwięcej złych sąsiadów w chromosomie
         //indeks wierzchołka, którego kolor będzie brany do zmiany z max
-        int indexMinBadNeighbour = numbersOfBadNeighbours.indexOf(min); // indeks wierzchołka, który ma najmniej złych sąsiadów w chromosomie
+        int indexMinBadNeighbour = badNeighboursArray.indexOf(min); // indeks wierzchołka, który ma najmniej złych sąsiadów w chromosomie
 
-        System.out.println("Bad Neighbour's number is: " + indexBadNeighbour);
+        //System.out.println("Bad Neighbour's number is: " + indexBadNeighbour);
         newColor = chromosom.get(indexMinBadNeighbour).kolor;
-        System.out.println("Max : Wierzchołek nr: " + indexBadNeighbour + " ma " + max + " o kolorze " + chromosom.get(indexBadNeighbour).kolor);
-        System.out.println("Min : Wierzchołek nr: " + indexMinBadNeighbour + " ma " + min + " o kolorze " + newColor);
+        //System.out.println("Max : Wierzchołek nr: " + indexBadNeighbour + " ma " + max + " o kolorze " + chromosom.get(indexBadNeighbour).kolor);
+        //System.out.println("Min : Wierzchołek nr: " + indexMinBadNeighbour + " ma " + min + " o kolorze " + newColor);
         chromosom.get(indexBadNeighbour).kolor = newColor;
         return chromosom;
     }
@@ -115,7 +115,7 @@ public class Mutation {
             }
         }
         while (true) {
-            System.out.println("Bad Neighbour's number is: " + indexBadNeighbour);
+            //System.out.println("Bad Neighbour's number is: " + indexBadNeighbour);
             newColor = chromosom.get(new Random().nextInt(chromosom.size())).kolor; //nowy randomowy kolor na jaki zostanie zamieniony wybrany wierzchołek
             if (chromosom.get(indexBadNeighbour).kolor != newColor) {
                 chromosom.get(indexBadNeighbour).kolor = newColor;
