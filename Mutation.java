@@ -27,7 +27,8 @@ public class Mutation {
                 if (chromosom.get(vertex.sasiedzi.get(d)).kolor == vertex.kolor) {
                     //jeśli tablica kolorów zawiera już taki kolor, to jest on z niej usuwany
                     if (colors.contains(chromosom.get(vertex.sasiedzi.get(d)).kolor))
-                        colors.remove((chromosom.get(vertex.sasiedzi.get(d)).kolor));
+                        colors.remove((Object)chromosom.get(vertex.sasiedzi.get(d)).kolor);
+
                 }
             }
             //dodawanie koloru randomowego
@@ -37,7 +38,7 @@ public class Mutation {
     }
 
     /**
-     * minMaxtransposition - przechodzi przez wszystkie wierzchołki w chromosomie. Dla każdego wierzchołka sprawdza ile ma złych sąsiadów,
+     * minMaxTransposition - przechodzi przez wszystkie wierzchołki w chromosomie. Dla każdego wierzchołka sprawdza ile ma złych sąsiadów,
      * czyli pokolorowanych w tym samym kolorze co on.
      * Ilość złych sąsiadów zapisuje w tablicy, której i-ty element zawiera ilość złych sąsiadów i-tego wierzchołka.
      * Znajduje wierzchołek, który ma najwięcej złych sąsiadów <- jemu będzie zmieniany kolor.

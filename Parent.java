@@ -20,7 +20,7 @@ public class Parent {
         Vector<Vertex> parent1id;
         Vector<Vertex> parent2id;
         
-        if(d.silentbadNeighbour(population.get(random1))<d.silentbadNeighbour(population.get(random2))) 
+        if(d.silentBadNeighbour(population.get(random1))<d.silentBadNeighbour(population.get(random2)))
         {
         	parent1id=population.get(random1);
         }
@@ -29,7 +29,7 @@ public class Parent {
         random1=new Random().nextInt(population.size());
         random2=new Random().nextInt(population.size());
         
-        if(d.silentbadNeighbour(population.get(random1))<d.silentbadNeighbour(population.get(random2))) 
+        if(d.silentBadNeighbour(population.get(random1))<d.silentBadNeighbour(population.get(random2)))
         {
         	parent2id=population.get(random1);
         }
@@ -59,7 +59,7 @@ public class Parent {
 	     int j=random1;
 		 for(int i=0;i<population.size();i++)
 		 {
-			 if(d.silentbadNeighbour(parent1id)<d.silentbadNeighbour(population.get(i)))
+			 if(d.silentBadNeighbour(parent1id)<d.silentBadNeighbour(population.get(i)))
 			 {
 				 parent1id=population.get(i);
 				 j=i;
@@ -69,7 +69,7 @@ public class Parent {
 		 for(int i=0;i<population.size();i++)
 		 {
 			 //zostaje rodzicem tylko jeśli jest inny od pierwszego rodzica
-			 if((i!=j)&&(d.silentbadNeighbour(parent2id)<d.silentbadNeighbour(population.get(i))))
+			 if((i!=j)&&(d.silentBadNeighbour(parent2id)<d.silentBadNeighbour(population.get(i))))
 			 {
 				 parent2id=population.get(i);
 			 }

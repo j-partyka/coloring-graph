@@ -69,12 +69,12 @@ public class Display {
     }
 
     /**
-     * silentbadNeighbour -  iteruje po wierzchołkach chromosomu i sumuje wierzchołki, które są sąsiadami i mają ten sam 
+     * silentBadNeighbour -  iteruje po wierzchołkach chromosomu i sumuje wierzchołki, które są sąsiadami i mają ten sam
      * kolor - czyli są w konflikcie. Zwraca całkowitą liczbę konfliktów. Nic nie wyświetla. 
      * @param chromosom wektor wierzchołków odpowiadający jednemu grafowi
      * @return badneigboramount - suma konfliktów (sąsiadów o tym samym kolorze) między wierzchołkami chromosomu
      */
-     public int silentbadNeighbour(Vector<Vertex> chromosom){
+     public int silentBadNeighbour(Vector<Vertex> chromosom){
         int pomoc=0;
         for (int b  = 0; b < chromosom.size(); b++){
 

@@ -1,14 +1,12 @@
 
 import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 public class Main {
-	static int  colours=6;
+	static int COLOURS =6;
     public static void main(String[] args) {
     	 Parent p1 = new Parent();
          Display d = new Display();
-        Graph g = new Graph("graf.txt");
+        Graph1 g = new Graph1("graf.txt");
         Vector<Vertex> chromosom = new Vector<Vertex>();
         
         
@@ -26,7 +24,7 @@ public class Main {
      	{
         	for(int j=0;j<population.get(i).size();j++)
         	{
-        		population.get(i).get(j).kolor=new Random().nextInt(colours);
+        		population.get(i).get(j).kolor=new Random().nextInt(COLOURS);
         	}
      	}
        //zmienna zmienna służy do ucieczki z pętli bo głupia Kasia jest zbyt leniwa żeby ogarnąć break label;
@@ -41,14 +39,14 @@ public class Main {
         	//mutacja
         	for(int i=0;i<population.size();i++)
          	{
-             	population.set(i, Mutation.one(population.get(i),colours));
+             	population.set(i, Mutation.simple(population.get(i), COLOURS));
          	}
         	 //sprawdzenie całej populacji
         	
         	
         	for(int i=0;i<population.size();i++)
          	{
-             if (d.silentbadNeighbour(population.get(i))==0) 
+             if (d.silentBadNeighbour(population.get(i))==0)
             	 {System.out.println("chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
             	 chromosom=population.get(i);
             	 zmienna=1;
