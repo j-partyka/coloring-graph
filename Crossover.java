@@ -24,8 +24,8 @@ public class Crossover {
         int crosspoint = new Random().nextInt(population.get(1).size());  //A - generowanie losowej liczby crosspoint z ilości wierzchołków w chromosomie
 
         for (int j = 0; j < population.size(); j++) {
-            int propability = new Random().nextInt(100);
-            if (propability < 70) {
+            int probability = new Random().nextInt(100);
+            if (probability < 70) {
                 Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
                 switch (j % 2) {
                     case 0: //kolorowanie dwójki dzieci tak samo
@@ -86,8 +86,8 @@ public class Crossover {
         } while (crosspoint1 >= crosspoint2); //A - ustawianie crosspoint1 na mniejszy, a crosspoint2 na większy
 
         for (int j = 0; j < population.size(); j++) {
-            int propability = new Random().nextInt(100);
-            if (propability < 70) {
+            int probability = new Random().nextInt(100);
+            if (probability < 70) {
                 Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
                 switch (j % 2) {
                     case 0: //kolorowanie dwójki dzieci tak samo
@@ -135,8 +135,8 @@ public class Crossover {
     public static Vector<Vector<Vertex>> uniform(Map.Entry<Vector<Vertex>, Vector<Vertex>> parents, Vector<Vector<Vertex>> population) {
 
         for (int j = 0; j < population.size(); j++) {
-            int propability = new Random().nextInt(100);
-            if (propability < 70) {
+            int probability = new Random().nextInt(100);
+            if (probability < 70) {
                 Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
                 switch (j % 2) {
                     case 0: //kolorowanie dwójki dzieci tak samo
@@ -192,8 +192,8 @@ public class Crossover {
     public static Vector<Vector<Vertex>> arithmetic(Map.Entry<Vector<Vertex>, Vector<Vertex>> parents, Vector<Vector<Vertex>> population, int colors) {
 
         for (int j = 0; j < population.size(); j++) {
-            int propability = new Random().nextInt(100);
-            if (propability < 70) {
+            int probability = new Random().nextInt(100);
+            if (probability < 70) {
                 Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
                 for (int i = 0; i < child.size(); i++) {
                     int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
