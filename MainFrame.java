@@ -11,7 +11,13 @@ public class MainFrame extends javax.swing.JFrame
     private int slc=1, crv=1, mtn=1, slc2=1, crv2=1, mtn2=1;
     private File file;
     private String filename = "graf.txt";  
-    private int colours=5;
+    private int colours=8;
+    Vector<Vertex> chromosom = new Vector<>();
+    
+    public Vector<Vertex> getChromosom()
+    {
+        return chromosom;
+    }
 
     /**
      * Creates new form MainFrame
@@ -262,6 +268,7 @@ public class MainFrame extends javax.swing.JFrame
         liczbaKolorowLabel.setText("Liczba kolorów:");
 
         liczbaKolorow.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(5), Integer.valueOf(2), null, Integer.valueOf(1)));
+        liczbaKolorow.setValue(8);
 
         buttonGroup3.add(mutation2);
         mutation2.setText("Min-max transposition");
@@ -465,11 +472,10 @@ public class MainFrame extends javax.swing.JFrame
     /*    */
     private void gotoweButtonMouseReleased(java.awt.event.MouseEvent evt) {                                           
         // TODO add your handling code here:
-        textArea.setText("lalala");
+        textArea.setText("Start");
         Graph1 g = new Graph1(filename);
         Parent p1 = new Parent();
         Display d = new Display();
-        Vector<Vertex> chromosom = new Vector<>();
         Vector<Vector<Vertex> > population;
         population = new Vector<>();
         population.setSize((int) wielkoscPopulacji.getValue());
@@ -502,7 +508,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Simple");
                     }
@@ -510,7 +517,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Min-max transposition");
                     }
@@ -519,7 +527,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Random transposition");
                     }
@@ -532,7 +541,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Simple");
                     }
@@ -540,7 +550,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
@@ -549,7 +560,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Random transposition");
                     }
@@ -562,7 +574,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Simple");
                     }
@@ -570,7 +583,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
@@ -579,7 +593,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Random transposition");
                     }
@@ -592,7 +607,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Simple");
                     }
@@ -600,7 +616,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
@@ -609,7 +626,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Random transposition");
                     }
@@ -627,7 +645,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Simple");
                     }
@@ -635,7 +654,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
@@ -644,7 +664,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Random transposition");
                     }
@@ -657,7 +678,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Simple");
                     }
@@ -665,7 +687,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
@@ -674,7 +697,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
@@ -687,7 +711,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Simple");
                     }
@@ -695,7 +720,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
@@ -704,7 +730,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
@@ -717,7 +744,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Simple");
                     }
@@ -725,7 +753,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
@@ -734,7 +763,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Random transposition");
                     }
@@ -752,7 +782,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Simple");
                     }
@@ -760,7 +791,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
@@ -769,7 +801,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                           int probability = new Random().nextInt(100);
+                           if (probability < 30)  population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Random transposition");
                     }
@@ -782,7 +815,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                           int probability = new Random().nextInt(100);
+                           if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Simple");
                     }
@@ -790,7 +824,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
@@ -799,7 +834,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
@@ -812,7 +848,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Simple");
                     }
@@ -820,7 +857,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
@@ -829,7 +867,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
@@ -842,7 +881,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.simple(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Simple");
                     }
@@ -850,7 +890,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
@@ -859,7 +900,8 @@ public class MainFrame extends javax.swing.JFrame
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                            int probability = new Random().nextInt(100);
+                            if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Random transposition");
                     }
@@ -1261,21 +1303,21 @@ public class MainFrame extends javax.swing.JFrame
             for(int i=0;i<population.size();i++)
             {
                 if (d.silentBadNeighbour(population.get(i))==0) 
-            	{
+                {
                     System.out.println("chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
                     chromosom=population.get(i);
                     zmienna=1;
                     break ;
-            	}     
+                }     
             }
         }
 
-        /* wypisywanie
+        //wypisywanie
         for(int i=0; i<population.size(); i++)
         {
-            d.IdColor(population.get(i));
+            d.idColorChromosom(population.get(i));
             d.goodNeighbour(population.get(i));
-        }*/
+        }
         
         System.out.println("koniec");
        
@@ -1382,10 +1424,10 @@ public class MainFrame extends javax.swing.JFrame
 
     private void grafButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-        GraphDisp gd = new GraphDisp();
+        GraphDisp gd = new GraphDisp(this.getChromosom());
         gd.pack();
         //gd.setVisible(true);
-        gd.showGraph();
+        gd.showGraph(this.getChromosom());
     }                                          
 /**/
     /**
