@@ -6,14 +6,16 @@ public class Graph1 {
     
     private String filename;
     
+    //Tworzymy listę wierzchołków grafu- "chromosom"
+    Vector<Vertex> chromosom = new Vector<Vertex>();
+    
     Graph1(String filename)
     {
         this.filename = filename;
     }
 
     public Vector<Vertex> load() {
-        //Tworzymy listę wierzchołków grafu- "chromosom"
-        Vector<Vertex> chromosom = new Vector<>();
+
         //inicjalizujemy bo mi nie działało jak inaczej
         // próbowałam robić sąsiedztwa. do poprawki najwyżej
         for (int j = 0; j < 100; j++) {
@@ -26,12 +28,17 @@ public class Graph1 {
         String pierwsze = "ERROR";
 
         Scanner sc2 = null;
-        try {
+        try
+        {
             sc2 = new Scanner(new File(filename));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e)
+        {
             e.printStackTrace();
         }
-        while (sc2.hasNextLine()) {
+        
+        while (sc2.hasNextLine())
+        {
             Scanner s2 = new Scanner(sc2.nextLine());
             boolean b;
             while (b = s2.hasNext()) {
@@ -61,16 +68,7 @@ public class Graph1 {
                 else i++;
             }
         }
-        //
-        Vector<Vertex> goodChromosom = new Vector<>();
-        for (int j = 0; j < 100; j++){
-            Vertex newVertex = chromosom.get(j);
-            if(newVertex.id != 150){
-                goodChromosom.add(newVertex);
-            }
-        }
-
-        return goodChromosom;
+        return chromosom;
         //koniec tworzenia grafu
     }
 }
