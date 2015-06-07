@@ -2,15 +2,15 @@
 import java.util.*;
 
 public class Main {
-	static int COLOURS =6;
+	static int COLOURS = 8;
     public static void main(String[] args) {
     	 Parent p1 = new Parent();
          Display d = new Display();
         Graph1 g = new Graph1("graf.txt");
-        Vector<Vertex> chromosom = new Vector<Vertex>();
+        Vector<Vertex> chromosom = new Vector<>();
         
         
-    	Vector<Vector<Vertex> > population = new Vector<Vector<Vertex> >();
+    	Vector<Vector<Vertex> > population = new Vector<>();
         population.setSize(4);
                     
         
@@ -39,11 +39,11 @@ public class Main {
         	//mutacja
         	for(int i=0;i<population.size();i++)
          	{
-             	population.set(i, Mutation.simple(population.get(i), COLOURS));
+				int probability = new Random().nextInt(100);
+				if (probability < 30)
+					population.set(i, Mutation.minMaxTransposition(population.get(i), COLOURS));
          	}
         	 //sprawdzenie całej populacji
-        	
-        	
         	for(int i=0;i<population.size();i++)
          	{
              if (d.silentBadNeighbour(population.get(i))==0)

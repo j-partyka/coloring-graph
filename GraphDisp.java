@@ -129,6 +129,7 @@ public class GraphDisp extends javax.swing.JFrame {
         {
             public Paint transform(Integer i)
             {
+
                 if (gr1.chromosom.get(i).kolor == 0) return Color.BLUE;
                 else if (gr1.chromosom.get(i).kolor == 1) return Color.RED;
                 else if (gr1.chromosom.get(i).kolor == 2) return Color.YELLOW;
