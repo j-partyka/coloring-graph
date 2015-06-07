@@ -24,38 +24,41 @@ public class Crossover {
         int crosspoint = new Random().nextInt(population.get(1).size());  //A - generowanie losowej liczby crosspoint z ilości wierzchołków w chromosomie
 
         for (int j = 0; j < population.size(); j++) {
-            Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
-            switch (j % 2) {
-                case 0: //kolorowanie dwójki dzieci tak samo
-                    for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
-                        int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
-                        int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
-                        Vertex temp = child.get(i); //temp - jeden wierzchołek dziecka
-                        int newId = temp.id; //id danego wierzchołka dziecka, któremu zmieni się odpowiednio kolor
-                        if (newId < crosspoint) { //kolorowanie przed crosspointem
-                            temp.kolor = kolor1;
-                        } else { //kolorowanie po crosspoincie
-                            temp.kolor = kolor2;
+            int propability = new Random().nextInt(100);
+            if (propability < 70) {
+                Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
+                switch (j % 2) {
+                    case 0: //kolorowanie dwójki dzieci tak samo
+                        for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
+                            int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
+                            int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
+                            Vertex temp = child.get(i); //temp - jeden wierzchołek dziecka
+                            int newId = temp.id; //id danego wierzchołka dziecka, któremu zmieni się odpowiednio kolor
+                            if (newId < crosspoint) { //kolorowanie przed crosspointem
+                                temp.kolor = kolor1;
+                            } else { //kolorowanie po crosspoincie
+                                temp.kolor = kolor2;
+                            }
+                            child.set(i, temp);
                         }
-                        child.set(i, temp);
-                    }
-                    population.set(j, child);
-                    break;
-                case 1: //kolorowanie dwójki dzieci odwrotnie do poprzedniego
-                    for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
-                        int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
-                        int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
-                        Vertex temp = child.get(i); //temp - jeden wierzchołek z wybranego dziecka
-                        int newId = temp.id;
-                        if (newId < crosspoint) {
-                            temp.kolor = kolor2;
-                        } else {
-                            temp.kolor = kolor1;
+                        population.set(j, child);
+                        break;
+                    case 1: //kolorowanie dwójki dzieci odwrotnie do poprzedniego
+                        for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
+                            int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
+                            int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
+                            Vertex temp = child.get(i); //temp - jeden wierzchołek z wybranego dziecka
+                            int newId = temp.id;
+                            if (newId < crosspoint) {
+                                temp.kolor = kolor2;
+                            } else {
+                                temp.kolor = kolor1;
+                            }
+                            child.set(i, temp);
                         }
-                        child.set(i, temp);
-                    }
-                    population.set(j, child);
-                    break;
+                        population.set(j, child);
+                        break;
+                }
             }
         }
         return population;
@@ -83,38 +86,41 @@ public class Crossover {
         } while (crosspoint1 >= crosspoint2); //A - ustawianie crosspoint1 na mniejszy, a crosspoint2 na większy
 
         for (int j = 0; j < population.size(); j++) {
-            Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
-            switch (j % 2) {
-                case 0: //kolorowanie dwójki dzieci tak samo
-                    for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
-                        int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
-                        int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
-                        Vertex temp = child.get(i); //temp - jeden wierzchołek dziecka
-                        int newId = temp.id; //id danego wierzchołka dziecka, któremu zmieni się odpowiednio kolor
-                        if (newId < crosspoint1 || newId > crosspoint2) {
-                            temp.kolor = kolor1;
-                        } else {
-                            temp.kolor = kolor2;
+            int propability = new Random().nextInt(100);
+            if (propability < 70) {
+                Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
+                switch (j % 2) {
+                    case 0: //kolorowanie dwójki dzieci tak samo
+                        for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
+                            int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
+                            int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
+                            Vertex temp = child.get(i); //temp - jeden wierzchołek dziecka
+                            int newId = temp.id; //id danego wierzchołka dziecka, któremu zmieni się odpowiednio kolor
+                            if (newId < crosspoint1 || newId > crosspoint2) {
+                                temp.kolor = kolor1;
+                            } else {
+                                temp.kolor = kolor2;
+                            }
+                            child.set(i, temp);
                         }
-                        child.set(i, temp);
-                    }
-                    population.set(j, child);
-                    break;
-                case 1: //kolorowanie dwójki dzieci tak samo
-                    for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
-                        int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
-                        int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
-                        Vertex temp = child.get(i); //temp - jeden wierzchołek dziecka
-                        int newId = temp.id; //id danego wierzchołka dziecka, któremu zmieni się odpowiednio kolor
-                        if (newId < crosspoint1 || newId > crosspoint2) {
-                            temp.kolor = kolor2;
-                        } else {
-                            temp.kolor = kolor1;
+                        population.set(j, child);
+                        break;
+                    case 1: //kolorowanie dwójki dzieci tak samo
+                        for (int i = 0; i < child.size(); i++) { //przejście i odpowiednie ustawienie kolorów wierzchołków w dziecku
+                            int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
+                            int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
+                            Vertex temp = child.get(i); //temp - jeden wierzchołek dziecka
+                            int newId = temp.id; //id danego wierzchołka dziecka, któremu zmieni się odpowiednio kolor
+                            if (newId < crosspoint1 || newId > crosspoint2) {
+                                temp.kolor = kolor2;
+                            } else {
+                                temp.kolor = kolor1;
+                            }
+                            child.set(i, temp);
                         }
-                        child.set(i, temp);
-                    }
-                    population.set(j, child);
-                    break;
+                        population.set(j, child);
+                        break;
+                }
             }
         }
         return population;
@@ -129,44 +135,47 @@ public class Crossover {
     public static Vector<Vector<Vertex>> uniform(Map.Entry<Vector<Vertex>, Vector<Vertex>> parents, Vector<Vector<Vertex>> population) {
 
         for (int j = 0; j < population.size(); j++) {
-            Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
-            switch (j % 2) {
-                case 0: //kolorowanie dwójki dzieci tak samo
-                    for (int i = 0; i < child.size(); i++) {
-                        int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
-                        int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
-                        Vertex temp = child.get(i);
-                        Random generator = new Random();
-                        switch (generator.nextInt(2)) { //A - randomowe wybieranie koloru jednego z dwóch
-                            case 0:
-                                temp.kolor = kolor1;
-                                break;
-                            case 1:
-                                temp.kolor = kolor2;
-                                break;
+            int propability = new Random().nextInt(100);
+            if (propability < 70) {
+                Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
+                switch (j % 2) {
+                    case 0: //kolorowanie dwójki dzieci tak samo
+                        for (int i = 0; i < child.size(); i++) {
+                            int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
+                            int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
+                            Vertex temp = child.get(i);
+                            Random generator = new Random();
+                            switch (generator.nextInt(2)) { //A - randomowe wybieranie koloru jednego z dwóch
+                                case 0:
+                                    temp.kolor = kolor1;
+                                    break;
+                                case 1:
+                                    temp.kolor = kolor2;
+                                    break;
+                            }
+                            child.set(i, temp);
                         }
-                        child.set(i, temp);
-                    }
-                    population.set(j, child);
-                    break;
-                case 1: //kolorowanie dwójki dzieci tak samo
-                    for (int i = 0; i < child.size(); i++) {
-                        int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
-                        int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
-                        Vertex temp = child.get(i);
-                        Random generator = new Random();
-                        switch (generator.nextInt(2)) { //A - randomowe wybieranie koloru jednego z dwóch
-                            case 0:
-                                temp.kolor = kolor2;
-                                break;
-                            case 1:
-                                temp.kolor = kolor1;
-                                break;
+                        population.set(j, child);
+                        break;
+                    case 1: //kolorowanie dwójki dzieci tak samo
+                        for (int i = 0; i < child.size(); i++) {
+                            int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
+                            int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
+                            Vertex temp = child.get(i);
+                            Random generator = new Random();
+                            switch (generator.nextInt(2)) { //A - randomowe wybieranie koloru jednego z dwóch
+                                case 0:
+                                    temp.kolor = kolor2;
+                                    break;
+                                case 1:
+                                    temp.kolor = kolor1;
+                                    break;
+                            }
+                            child.set(i, temp);
                         }
-                        child.set(i, temp);
-                    }
-                    population.set(j, child);
-                    break;
+                        population.set(j, child);
+                        break;
+                }
             }
         }
         return population;
@@ -183,15 +192,18 @@ public class Crossover {
     public static Vector<Vector<Vertex>> arithmetic(Map.Entry<Vector<Vertex>, Vector<Vertex>> parents, Vector<Vector<Vertex>> population, int colors) {
 
         for (int j = 0; j < population.size(); j++) {
-            Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
-            for (int i = 0; i < child.size(); i++) {
-                int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
-                int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
-                Vertex temp = child.get(i);
-                temp.kolor = (kolor1 * kolor2) % colors; //modulo ilość kolorów występujących w danym grafie
-                child.set(i, temp);
+            int propability = new Random().nextInt(100);
+            if (propability < 70) {
+                Vector<Vertex> child = population.get(j); //A - child - jeden chromosom z populacji Offspring
+                for (int i = 0; i < child.size(); i++) {
+                    int kolor1 = parents.getKey().get(i).kolor; //kolor1 = kolor z pierwszego parenta
+                    int kolor2 = parents.getValue().get(i).kolor; //kolor2 = kolor z drugiego parenta
+                    Vertex temp = child.get(i);
+                    temp.kolor = (kolor1 * kolor2) % colors; //modulo ilość kolorów występujących w danym grafie
+                    child.set(i, temp);
+                }
+                population.set(j, child);
             }
-            population.set(j, child);
         }
         return population;
     }
