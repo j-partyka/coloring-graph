@@ -4,11 +4,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 %\usepackage{times}
-%\usepackage{graphicx}
+\usepackage{graphicx,wrapfig}
 %\usepackage{anysize}
 %\usepackage{tikz}
 %\usetikzlibrary{calc,through,backgrounds,positioning}
-%\usepackage{anysize}
+\usepackage{anysize}
+\usepackage{float}
 %\usepackage{stmaryrd}
 %\usepackage{amssymb}
 %\usepackage{amsthm}
@@ -18,7 +19,6 @@
 %\usepackage{listings}
 %\usepackage{enumerate}
 %\lstloadlanguages{Ada,C++}
-
 
 
 \begin{document}	
@@ -95,6 +95,7 @@
 
 \tableofcontents
 \vfill
+%\pagebreak
 
 %SEKCJE
 %opis zagadnienia, temat, problem, dlaczego chcemy to rozwiązacyać metodą ewolucyjnę
@@ -105,54 +106,230 @@
 %
 %
 
-\section{Wstęp}
+%\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
 \section{Opis zagadnienia}
+\indent
 
-This is the first section.
-
-Lorem  ipsum  dolor  sit  amet,  consectetuer  adipiscing  
-elit.   Etiam  lobortisfacilisis sem.  Nullam nec mi et 
-neque pharetra sollicitudin.  Praesent imperdietmi nec ante. 
-Donec ullamcorper, felis non sodales...
+Niniejszy dokument przedstawia propozycję rozwiązania problemu kolorowania grafu wierzchołkowo. Kolorowanie to polega klasycznie na przypisaniu wierzchołkom takich kolorów ze zbioru dostępnych barw, aby żadne dwa połączone krawędzią wierzchołki nie miały tego samego koloru. 
 
 \section{Algorytm genetyczny}
+\indent
+
+Do rozwiązania tego problemu został użyty algorytm genetyczny. Jest to rodzaj algorytmu przeszukującego przestrzeń alternatywnych rozwiązań problemu w celu wyszukania rozwiązań najlepszych. Sposób działania algorytmów genetycznych przypomina zjawisko ewolucji biologicznej, ponieważ ich twórca John Henry Holland czerpał inspiracje do swoich prac z biologii.
+
 \addcontentsline{toc}{section}{Powód zastosowania}
 \section*{Powód zastosowania}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
-Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
-sollicitudin.  Praesent imperdiet mi necante...
+\indent
+
+Do rozwiązania problemu użyto algorytmu genetycznego, ponieważ dzięki niemu rozwiązania są nie tylko poprawne, ale też efektywnie znajdowane. Taki algorytm jest też ciekawy do zaimplementowania i pokazuje, że losowe działania potrafią prowadzić do dobrego rozwiązania.
+
 \addcontentsline{toc}{section}{Ogólny opis algorytmu}
 \section*{Ogólny opis algorytmu}
+\indent
+
+Problem definiuje środowisko, w którym istnieje pewna populacja osobników - w tym przypadku alternatywnych zakolorowań grafów. Każdy z osobników ma przypisany pewien zbiór informacji stanowiących jego genotyp (podstawę), a będących podstawą do utworzenia fenotypu (wariację wywodzącą się z podstawy). Fenotyp to zbiór cech podlegających ocenie funkcji przystosowania modelującej środowisko - w tym przypadku kolor wierzchołka. Innymi słowy - genotyp opisuje proponowane rozwiązanie problemu, a funkcja przystosowania ocenia - tutaj suma dobrze pokolorowanych wierzchołków - jak dobre jest to rozwiązanie.
+\\
+
+Genotyp składa się z chromosomów, gdzie zakodowany jest fenotyp i ewentualnie pewne informacje pomocnicze dla algorytmu genetycznego. Chromosom składa się z genów.
+\\
+
+Cechy algorytmów ewolucyjnych, odróżniające je od tradycyjnych metod optymalizacji to:
+\\- celowe wprowadzenie elementów losowych, \\
+- przetwarzanie populacji rozwiązań, prowadzące do równoległego przeszukiwania przestrzeni rozwiązań z różnych punktów,\\
+- stosowanie operatorów genetycznych. \\
+\\
+
+
+ %\begin{figure}[bt]
+ %\raggedright{\includegraphics[scale=0.2]{alggenimage}}
+ %\raggedright{	\caption{schemat algorytmu}}
+% \end{figure}
+
+\begin{wrapfigure}{l}{5.5cm}
+	\caption{schemat algorytmu}
+	\includegraphics[width=4.5cm]{alggenimage}
+\end{wrapfigure} 
+
+Działanie algorytmu przebiega następująco:
+\\
+\textbf{Start} Wygeneruj populację n chromosomów (różnych kolorowań danego grafu)
+\\
+\textbf{Fitness} Policz funkcję przystosowania dla każdego chromosomu.
+Stwórz nową populację poprzez kolejne kroki.
+\\
+\textbf{Selection} Wybierz rodziców-chromosomy dla nowej populacji (na przykład korzystając z policzonej prędzej funkcji przystosowania).
+\\
+\textbf{Crossover} Na podstawie prawdopodobieństwa skrzyżowania utwórz nowe chromosomy z rodziców. Jeżeli nie doszło do krzyżowania, nowy chromosom to dokładna kopia rodzica.
+\\
+\textbf{Mutation}  Na podstawie prawdopodobieństwa mutacji zmutować każdy nowy chromosom.
+\\
+\textbf{Accepting} Dodaj nowy chromosom jako członka nowej populacji.
+\\
+\textbf{Replacing} Użyj nowej populacji jako podstawy do kolejnych działań.
+\\
+\textbf{Test} Jeżeli został spełniony warunek stopu - zakończ działanie algorytmu i zwróć najlepsze rozwiązanie w aktualnej populacji.\\
+Jeżeli warunek nie został spełniony - skok do Fitness. 
+\pagebreak
+
+Najczęściej stosowane kodowania chromosomu:
+
+- wektor genów, z których każdy z nich może być jedno- lub wielobitową liczbą całkowitą lub rzeczywistą,\\
+- za pomocą drzewiastych struktur danych.\\
+
+W algorytmie rozwiązującym problem kolorowania grafu wierzchołkowo zastosowano pierwszy sposób kodowania chromosomu. 
+
+
+
+
 
 \section{Metody rozwiązania problemu}
+\indent
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
-Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
-sollicitudin.  Praesent imperdiet mi necante...
-\addcontentsline{toc}{section}{Operator selekcji}
-\section*{Operator selekcji}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
-Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
-sollicitudin.  Praesent imperdiet mi necante...
+W tym rozdziale zostaną przedstawione metody wykorzystane do rozwiązania problemu kolorowania grafu wierzchołkowo. Program został napisany w Javie, z wykorzystaniem bibliotek Swing i JUNG, pozwala on użytkownikowi na wybranie dowolnego zestawu operatorów, liczby kolorów użytych do kolorowania, wielkości populacji a także pliku z grafem. Poniżej zajmiemy się opisem istotnych ze względu na temat elementów, czyli sposobem działania poszczególnych metod selekcji, operatorów mutacji i krzyżowania oraz funkcji oceny. 
+\addcontentsline{toc}{section}{Funkcja oceny}
+\section*{Funkcja oceny}
+\indent
+
+Funkcja oceny to miara jakości dowolnego osobnika w populacji.
+Wykorzystana w tym projekcie funkcja oceny działa nie wprost - oblicza i zwraca sumę wszystkich sąsiadów wszystkich wierzchołków, którzy mają "zły" kolor - czyli taki sami jak sąsiadujący wierzchołek. Powód wyboru takiej formy funkcji oceny to wygoda stosowania jej jako warunku stopu - wartość zwracana równa zeru oznacza, że graf został poprawnie pokolorowany. 
+
+%\addcontentsline{toc}{section}{$ f $ silentBadNeighbour}
+\section*{$ f $  silentBadNeighbour}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{silent}}
+	\raggedright{	\caption{pseudokod Display.silentBadNeighbour}}
+\end{figure}
+%\addcontentsline{toc}{section}{$ f $ goodNeighbour}
+\section*{$ f $  goodNeighbour}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{good}}
+	\raggedright{	\caption{pseudokod Display.goodNeighbour}}
+\end{figure}
+\addcontentsline{toc}{section}{Metoda selekcji}
+\section*{Metoda selekcji}
+\indent
+
+Metody selekcji służą do wyboru chromosomów (wariantów kolorowania grafu), których fragmenty zostaną wykorzystane do utworzenia bazy pod nowe warianty kolorowania grafu. 
+
+%\addcontentsline{toc}{section}{$ f $  random}
+\section*{$ f $  random}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{Prandom}}
+	\raggedright{	\caption{pseudokod Parent.random}}
+\end{figure}
+
+%\addcontentsline{toc}{section}{$ f $  bestParent}
+\section*{$ f $  bestParent}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{Pbest}}
+	\raggedright{	\caption{pseudokod Parent.bestParent}}
+\end{figure}
+%\addcontentsline{toc}{section}{$ f $ fitParent}
+\section*{$ f $ fitParent}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{Pfit}}
+	\raggedright{	\caption{pseudokod Parent.fitParent}}
+\end{figure}
+
 \addcontentsline{toc}{section}{Operator krzyżowania}
 \section*{Operator krzyżowania}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
-Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
-sollicitudin.  Praesent imperdiet mi necante...
+\indent
+
+W każdym cyklu (każde pokolenie) poddawane są "obróbce" za pomocą operatorów ewolucyjnych. Celem tego etapu jest wygenerowanie nowego pokolenia, na podstawie poprzedniego, które być może będzie lepiej dopasowane do założonego środowiska. Operator krzyżowania ma za zadanie łączyć w różnych kombinacjach cechy pochodzące z różnych osobników populacji. 
+
+%\addcontentsline{toc}{section}{$ f $ onePoint}
+\section*{$ f $ onePoint}
+\indent
+
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{ConePoint}}
+	\raggedright{	\caption{pseudokod Crossover.onePoint}}
+\end{figure}
+
+
+
+%\addcontentsline{toc}{section}{$ f $ twoPoint}
+\section*{$ f $ twoPoint}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{CtwoPoint}}
+	\raggedright{	\caption{pseudokod Crossover.twoPoint}}
+\end{figure}
+
+%\addcontentsline{toc}{section}{$ f $ uniform}
+\section*{$ f $ uniform}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{Cuniform}}
+	\raggedright{	\caption{pseudokod Crossover.uniform}}
+\end{figure}
+%\addcontentsline{toc}{section}{$ f $ arithmetic}
+\section*{$ f $ arithmetic}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{Carithmetic}}
+	\raggedright{	\caption{pseudokod Crossover.arithmetic}}
+\end{figure}
+
 \addcontentsline{toc}{section}{Operator mutacji}
 \section*{Operator mutacji}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
-Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
-sollicitudin.  Praesent imperdiet mi necante...
+\indent
+
+Operator mutacji, drugi z operatorów ewolucyjnych, ma za zadanie zwiększać różnorodność osobników danej populacji. Prawdopodobieństwo mutacji jest znacznie mniejsze niż prawdopodobieństwo krzyżowania.
+%\addcontentsline{toc}{section}{$ f $ simple}
+\section*{$ f $ simple}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{Msimple}}
+	\raggedright{	\caption{pseudokod Mutation.simple}}
+\end{figure}
+
+%\addcontentsline{toc}{section}{$ f $ randomTransposition}
+\section*{$ f $ randomTransposition}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{Mrandom}}
+	\raggedright{	\caption{pseudokod Mutation.randomTransposition}}
+\end{figure}
+
+%\addcontentsline{toc}{section}{$ f $ minmaxTransposition}
+\section*{$ f $ minMaxTransposition}
+\indent
+\begin{figure}[H]%[!htb]
+	\centerline{\includegraphics[scale=0.7]{Mmin}}
+	\raggedright{	\caption{pseudokod Mutation.minMaxTransposition}}
+\end{figure}
+
 \section*{Podsumowanie}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
-Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
-sollicitudin.  Praesent imperdiet mi necante...
+\indent
+
+Podsumowując, użytkownik ma szeroki wybór opisanych powyżej metod używanych przez algorytm genetyczny. Wyboru dokonuje się korzystając z wygodnego menu przedstawionego na Rysunku 2.
+\begin{figure}[bt]
+\centerline{\includegraphics[scale=0.7]{alggenmenu}}
+\raggedright{	\caption{menu}}
+\end{figure}
 \section{Testy}
+\indent
+sd
+\section{Wnioski}
+\indent
+
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
 Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
 sollicitudin.  Praesent imperdiet mi necante...
 \section{Literatura}
+\indent
+
+
+Marek Kubale i inni: Optymalizacja dyskretna. Modele i metody kolorowania grafów. WNT, 2002. ISBN 83-204-2747-9.
+
+
+
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
 Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
 sollicitudin.  Praesent imperdiet mi necante...
