@@ -28,19 +28,19 @@ public class Main {
 
        //zmienna zmienna służy do ucieczki z pętli bo głupia Kasia jest zbyt leniwa żeby ogarnąć break label;
         int zmienna=0;
-        for (int p = 0; p < 2000; p++) {
+        for (int p = 0; p < 15000; p++) {
         	//mutujemy,wybieramy,crossujemy, sprawdzamy chromosoma,ZNOWU(p++) mutujemy...
         
         	//parent i cross
-        	Map.Entry< Vector<Vertex> ,Vector<Vertex>> parent=p1.bestparent(population);  
+        	Map.Entry< Vector<Vertex> ,Vector<Vertex>> parent=p1.fitparent(population);
         	//do chromosoma wrzucamy tego który nam wyszedł z crossovera
-        	population=Crossover.twoPoint(parent, population);
+        	population=Crossover.uniform(parent, population);
         	//mutacja
         	for(int i=0;i<population.size();i++)
          	{
 				int probability = new Random().nextInt(100);
 				if (probability < 30)
-					population.set(i, Mutation.simple(population.get(i), COLOURS));
+					population.set(i, Mutation.randomTransposition(population.get(i), COLOURS));
          	}
         	 //sprawdzenie całej populacji
         	for(int i=0;i<population.size();i++)
@@ -55,15 +55,7 @@ public class Main {
         	if (zmienna==1) break;
         }
 
-		// funkcja zliczająca ilość kolorów jakimi został pokolorowany graf
-		ArrayList<Integer> colorsOutValue = new ArrayList<>();
-		for(int i = 0; i < chromosom.size(); i++){
-
-			if(!colorsOutValue.contains(chromosom.get(i).kolor)) {
-				colorsOutValue.add(chromosom.get(i).kolor);
-			}
-		}
-		System.out.println("Ilość kolorów pokolorowanego grafu na wyjściu: " + colorsOutValue.size());
+		System.out.println("Ilość kolorów pokolorowanego grafu na wyjściu: " + d.silentColours(chromosom));
 
 
         //for(int i=0;i<population.size();i++)
