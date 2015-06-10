@@ -12,6 +12,7 @@ import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Paint;
+import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -25,13 +26,15 @@ public class GraphDisp extends javax.swing.JFrame {
     Factory <Integer> vertexFactory;
     Factory<String> edgeFactory;
     String filename = "graf.txt";
+    private Vector<Vertex> chromosom;
+    String z = "I"; //do nazywania krawędzi
 
     /**
      * Creates new form GraphDisp
      */
-    public GraphDisp() {
+    public GraphDisp(Vector<Vertex> chromosom) {
         initComponents();
-        g = new SparseMultigraph<Integer, String>();
+        g = new SparseMultigraph<>();
         nodeCount = 0; edgeCount = 0;
         vertexFactory = new Factory<Integer>() { // My vertex factory
             public Integer create() {
@@ -46,6 +49,7 @@ public class GraphDisp extends javax.swing.JFrame {
         
         Graph2 gr = new Graph2(filename);
         g = gr.load();
+        this.chromosom = chromosom;
     }
     
     public void setFilename(String filename)
@@ -89,9 +93,9 @@ public class GraphDisp extends javax.swing.JFrame {
         frame.setVisible(true);  
     }*/
     
-    public void showGraph()
+    public void showGraph(Vector<Vertex> chrom)
     {
-        GraphDisp sgv = new GraphDisp(); //We create our graph in here
+        GraphDisp sgv = new GraphDisp(chrom); //We create our graph in here
         // The Layout<V, E> is parameterized by the vertex and edge types
         Layout<Integer, String> layout = new CircleLayout(sgv.g);
         layout.setSize(new Dimension(300,300)); // sets the initial size of the layout space
@@ -101,46 +105,22 @@ public class GraphDisp extends javax.swing.JFrame {
         
         vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
         
-        //KOLORY
-        /*
-        Transformer<Integer,Paint> zielony = new Transformer<Integer,Paint>() {
-            public Paint transform(Integer i) {
-                return Color.GREEN;
-            }
-        };  
-        
-        Transformer<Integer,Paint> zolty = new Transformer<Integer,Paint>() {
-            public Paint transform(Integer i) {
-                return Color.YELLOW;
-            }
-        };  
-        
-        Transformer<Integer,Paint> niebieski = new Transformer<Integer,Paint>() {
-            public Paint transform(Integer i) {
-                return Color.BLUE;
-            }
-        }; */
-        //KONIEC KOLOROW-------------------------------------------
-        
-        Graph1 gr1 = new Graph1(filename);
-        gr1.load();
-        
+       
         Transformer<Integer, Paint> vertexPaint = new Transformer<Integer, Paint>()
         {
             public Paint transform(Integer i)
             {
-
-                if (gr1.chromosom.get(i).kolor == 0) return Color.BLUE;
-                else if (gr1.chromosom.get(i).kolor == 1) return Color.RED;
-                else if (gr1.chromosom.get(i).kolor == 2) return Color.YELLOW;
-                else if (gr1.chromosom.get(i).kolor == 3) return Color.GREEN;
-                else if (gr1.chromosom.get(i).kolor == 4) return Color.ORANGE;
-                else if (gr1.chromosom.get(i).kolor == 5) return Color.PINK;
-                else if (gr1.chromosom.get(i).kolor == 6) return Color.GRAY;
-                else if (gr1.chromosom.get(i).kolor == 7) return Color.CYAN;
-                else if (gr1.chromosom.get(i).kolor == 8) return Color.MAGENTA;
-                else if (gr1.chromosom.get(i).kolor == 9) return Color.WHITE;
-                else if (gr1.chromosom.get(i).kolor == 10) return Color.BLACK;
+                if (chrom.get(i).kolor == 0) return Color.BLUE;
+                else if (chrom.get(i).kolor == 1) return Color.RED;
+                else if (chrom.get(i).kolor == 2) return Color.YELLOW;
+                else if (chrom.get(i).kolor == 3) return Color.GREEN;
+                else if (chrom.get(i).kolor == 4) return Color.ORANGE;
+                else if (chrom.get(i).kolor == 5) return Color.PINK;
+                else if (chrom.get(i).kolor == 6) return Color.GRAY;
+                else if (chrom.get(i).kolor == 7) return Color.CYAN;
+                else if (chrom.get(i).kolor == 8) return Color.MAGENTA;
+                else if (chrom.get(i).kolor == 9) return Color.WHITE;
+                else if (chrom.get(i).kolor == 10) return Color.BLACK;
                 else return Color.LIGHT_GRAY;
             }  
         };
