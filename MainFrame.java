@@ -3,17 +3,18 @@ import java.util.*;
 import javax.swing.JFileChooser;
 
 /**
- *
+ * 
  * GUI
  */
 public class MainFrame extends javax.swing.JFrame
-{
+{    
     private int slc=1, crv=1, mtn=1, slc2=1, crv2=1, mtn2=1;
     private File file;
-    private String filename = "graf.txt";
+    private String filename = "graf.txt";  
     private int colours=8;
     Vector<Vertex> chromosom = new Vector<>();
-
+    Vector<Vector<Vertex> > population = new Vector<>();
+    
     public Vector<Vertex> getChromosom()
     {
         return chromosom;
@@ -312,181 +313,179 @@ public class MainFrame extends javax.swing.JFrame
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selection2)
+                            .addComponent(selection1)
+                            .addComponent(selection3)
+                            .addComponent(selectionLabel)
+                            .addComponent(selection23)
+                            .addComponent(selection22)
+                            .addComponent(selection21)
+                            .addComponent(selection2label))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(selection2)
-                                                        .addComponent(selection1)
-                                                        .addComponent(selection3)
-                                                        .addComponent(selectionLabel)
-                                                        .addComponent(selection23)
-                                                        .addComponent(selection22)
-                                                        .addComponent(selection21)
-                                                        .addComponent(selection2label))
-                                                .addGap(20, 20, 20)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(crossoverLabel)
-                                                                        .addComponent(crossover1)
-                                                                        .addComponent(crossover2)
-                                                                        .addComponent(crossover3)
-                                                                        .addComponent(crossover4))
-                                                                .addContainerGap())
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(crossover2label)
-                                                                        .addComponent(crossover21)
-                                                                        .addComponent(crossover22)
-                                                                        .addComponent(crossover23)
-                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                .addComponent(gotoweButton)
-                                                                                .addComponent(crossover24)))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(grafButton)
-                                                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(mutation23)
-                                                                                        .addComponent(mutation22)
-                                                                                        .addComponent(mutation21)
-                                                                                        .addComponent(mutation2label)
-                                                                                        .addComponent(mutationLabel)
-                                                                                        .addComponent(mutation1)
-                                                                                        .addComponent(mutation2)
-                                                                                        .addComponent(mutation3))
-                                                                                .addGap(0, 0, Short.MAX_VALUE))))))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(liczbaKolorowLabel)
-                                                        .addComponent(wielkoscPopulacjiLabel)
-                                                        .addComponent(wielkoscPopulacji, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(0, 0, Short.MAX_VALUE))))
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane1)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(plikButton)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(crossoverLabel)
+                                    .addComponent(crossover1)
+                                    .addComponent(crossover2)
+                                    .addComponent(crossover3)
+                                    .addComponent(crossover4))
                                 .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(crossover2label)
+                                    .addComponent(crossover21)
+                                    .addComponent(crossover22)
+                                    .addComponent(crossover23)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(gotoweButton)
+                                        .addComponent(crossover24)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(grafButton)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(mutation23)
+                                            .addComponent(mutation22)
+                                            .addComponent(mutation21)
+                                            .addComponent(mutation2label)
+                                            .addComponent(mutationLabel)
+                                            .addComponent(mutation1)
+                                            .addComponent(mutation2)
+                                            .addComponent(mutation3))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(liczbaKolorowLabel)
+                            .addComponent(wielkoscPopulacjiLabel)
+                            .addComponent(wielkoscPopulacji, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(plikButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(selectionLabel)
-                                        .addComponent(crossoverLabel)
-                                        .addComponent(mutationLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(selection1)
-                                        .addComponent(crossover1)
-                                        .addComponent(mutation1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(selection2)
-                                        .addComponent(crossover2)
-                                        .addComponent(mutation2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(crossover3)
-                                        .addComponent(selection3)
-                                        .addComponent(mutation3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(crossover4)
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(selection2label)
-                                        .addComponent(crossover2label)
-                                        .addComponent(mutation2label))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(selection21)
-                                        .addComponent(crossover21)
-                                        .addComponent(mutation21))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(selection22)
-                                        .addComponent(crossover22)
-                                        .addComponent(mutation22))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(selection23)
-                                        .addComponent(crossover23)
-                                        .addComponent(mutation23))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(crossover24)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                .addComponent(wielkoscPopulacjiLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(wielkoscPopulacji, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(liczbaKolorowLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(plikButton)
-                                        .addComponent(gotoweButton)
-                                        .addComponent(grafButton))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(17, 17, 17))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectionLabel)
+                    .addComponent(crossoverLabel)
+                    .addComponent(mutationLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection1)
+                    .addComponent(crossover1)
+                    .addComponent(mutation1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection2)
+                    .addComponent(crossover2)
+                    .addComponent(mutation2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(crossover3)
+                    .addComponent(selection3)
+                    .addComponent(mutation3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(crossover4)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection2label)
+                    .addComponent(crossover2label)
+                    .addComponent(mutation2label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection21)
+                    .addComponent(crossover21)
+                    .addComponent(mutation21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection22)
+                    .addComponent(crossover22)
+                    .addComponent(mutation22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selection23)
+                    .addComponent(crossover23)
+                    .addComponent(mutation23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(crossover24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(wielkoscPopulacjiLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(wielkoscPopulacji, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(liczbaKolorowLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(plikButton)
+                    .addComponent(gotoweButton)
+                    .addComponent(grafButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>                        
 
-    private void crossover1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void crossover1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         crv=1;
-    }
+    }                                          
 
-    private void selection1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void selection1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         slc=1;
-    }
+    }                                          
 
-    private void selection2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void selection2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         slc=2;
-    }
+    }                                          
 
-    private void crossover2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void crossover2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         crv=2;
-    }
+    }                                          
 
-    private void mutation1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void mutation1ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
         mtn=1;
-    }
+    }                                         
     /*    */
-    private void gotoweButtonMouseReleased(java.awt.event.MouseEvent evt) {
+    private void gotoweButtonMouseReleased(java.awt.event.MouseEvent evt) {                                           
         // TODO add your handling code here:
         textArea.setText("Start");
         Graph1 g = new Graph1(filename);
         Parent p1 = new Parent();
         Display d = new Display();
-        Vector<Vector<Vertex> > population;
-        population = new Vector<>();
         population.setSize((int) wielkoscPopulacji.getValue());
         colours = (int) liczbaKolorow.getValue();
         int zmienna = 0;
-
-        for (int i = 0; i < population.size(); i++)
+        
+        for(int i=0; i<population.size(); i++)
         {
-            population.set(i, g.load());
+                population.set(i, g.load());
         }
-
+        
         for(int i=0; i<population.size(); i++)
         {
             for(int j=0; j<population.get(i).size(); j++)
@@ -494,9 +493,9 @@ public class MainFrame extends javax.swing.JFrame
                 population.get(i).get(j).kolor = new Random().nextInt(5);
             }
         }
-
+        
         for(int p=0; p<17000; p++)
-        {
+        {   
             if(slc == 1)
             {
                 Map.Entry<Vector<Vertex>, Vector<Vertex>> parent = p1.random(population);
@@ -504,7 +503,7 @@ public class MainFrame extends javax.swing.JFrame
                 if(crv == 1)
                 {
                     population = Crossover.onePoint(parent, population);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -522,7 +521,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -537,7 +536,7 @@ public class MainFrame extends javax.swing.JFrame
                 else if(crv == 2)
                 {
                     population = Crossover.twoPoint(parent, population);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -555,7 +554,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -566,11 +565,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv == 3)
                 {
                     population = Crossover.uniform(parent, population);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -588,7 +587,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -599,11 +598,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv == 4)
                 {
                     population = Crossover.arithmetic(parent, population, colours);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -621,7 +620,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -641,7 +640,7 @@ public class MainFrame extends javax.swing.JFrame
                 if(crv == 1)
                 {
                     population = Crossover.onePoint(parent, population);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -659,7 +658,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -674,7 +673,7 @@ public class MainFrame extends javax.swing.JFrame
                 else if(crv == 2)
                 {
                     population = Crossover.twoPoint(parent, population);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -692,7 +691,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -703,11 +702,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv == 3)
                 {
                     population = Crossover.uniform(parent, population);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -725,7 +724,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -736,11 +735,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv == 4)
                 {
                     population = Crossover.arithmetic(parent, population, colours);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -758,7 +757,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -770,15 +769,15 @@ public class MainFrame extends javax.swing.JFrame
                     }
                 }
             }
-
+                
             else if(slc==3)
             {
                 Map.Entry<Vector<Vertex>, Vector<Vertex>> parent = p1.fitparent(population);
-
+                
                 if(crv == 1)
                 {
                     population = Crossover.onePoint(parent, population);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -796,13 +795,13 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            int probability = new Random().nextInt(100);
-                            if (probability < 30)  population.set(i, Mutation.randomTransposition(population.get(i), colours));
+                           int probability = new Random().nextInt(100);
+                           if (probability < 30)  population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Random transposition");
                     }
@@ -811,12 +810,12 @@ public class MainFrame extends javax.swing.JFrame
                 else if(crv == 2)
                 {
                     population = Crossover.twoPoint(parent, population);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
-                            int probability = new Random().nextInt(100);
-                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
+                           int probability = new Random().nextInt(100);
+                           if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Simple");
                     }
@@ -829,7 +828,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -840,11 +839,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv == 3)
                 {
                     population = Crossover.uniform(parent, population);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -862,7 +861,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -873,11 +872,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv == 4)
                 {
                     population = Crossover.arithmetic(parent, population, colours);
-                    if(mtn == 1)
+                    if(mtn == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -895,7 +894,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -907,24 +906,24 @@ public class MainFrame extends javax.swing.JFrame
                     }
                 }
             }
-
+            
             for(int i=0;i<population.size();i++)
             {
-                if (d.silentBadNeighbour(population.get(i))==0)
-                {
+                if (d.silentBadNeighbour(population.get(i))==0) 
+            	{
                     System.out.println("chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
                     chromosom=population.get(i);
                     zmienna=1;
                     break ;
-                }
+            	}     
             }
             if (zmienna==1) break;
         }
-
+        
         for(int p=0; p<3000; p++)
         {
             if (zmienna==1) break;
-
+            
             if(slc2 == 1)
             {
                 Map.Entry<Vector<Vertex>, Vector<Vertex>> parent = p1.random(population);
@@ -932,7 +931,7 @@ public class MainFrame extends javax.swing.JFrame
                 if(crv2 == 1)
                 {
                     population = Crossover.onePoint(parent, population);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -948,7 +947,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -962,7 +961,7 @@ public class MainFrame extends javax.swing.JFrame
                 else if(crv2 == 2)
                 {
                     population = Crossover.twoPoint(parent, population);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -978,7 +977,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -988,11 +987,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv2 == 3)
                 {
                     population = Crossover.uniform(parent, population);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1008,7 +1007,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1018,11 +1017,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv2 == 4)
                 {
                     population = Crossover.arithmetic(parent, population, colours);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1038,7 +1037,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1057,7 +1056,7 @@ public class MainFrame extends javax.swing.JFrame
                 if(crv2 == 1)
                 {
                     population = Crossover.onePoint(parent, population);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1073,7 +1072,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1087,7 +1086,7 @@ public class MainFrame extends javax.swing.JFrame
                 else if(crv2 == 2)
                 {
                     population = Crossover.twoPoint(parent, population);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1103,7 +1102,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1113,11 +1112,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv2 == 3)
                 {
                     population = Crossover.uniform(parent, population);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1133,7 +1132,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1143,11 +1142,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv2 == 4)
                 {
                     population = Crossover.arithmetic(parent, population, colours);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1163,7 +1162,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1174,15 +1173,15 @@ public class MainFrame extends javax.swing.JFrame
                     }
                 }
             }
-
+                
             else if(slc2==3)
             {
                 Map.Entry<Vector<Vertex>, Vector<Vertex>> parent = p1.fitparent(population);
-
+                
                 if(crv2 == 1)
                 {
                     population = Crossover.onePoint(parent, population);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1198,7 +1197,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1212,7 +1211,7 @@ public class MainFrame extends javax.swing.JFrame
                 else if(crv2 == 2)
                 {
                     population = Crossover.twoPoint(parent, population);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1228,7 +1227,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1238,11 +1237,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv2 == 3)
                 {
                     population = Crossover.uniform(parent, population);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1258,7 +1257,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1268,11 +1267,11 @@ public class MainFrame extends javax.swing.JFrame
                         textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
-
+                
                 else if(crv2 == 4)
                 {
                     population = Crossover.arithmetic(parent, population, colours);
-                    if(mtn2 == 1)
+                    if(mtn2 == 1) 
                     {
                         for(int i=0; i<population.size(); i++)
                         {
@@ -1288,7 +1287,7 @@ public class MainFrame extends javax.swing.JFrame
                         }
                         textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
-
+                    
                     else if(mtn2 == 3)
                     {
                         for(int i=0; i<population.size(); i++)
@@ -1299,130 +1298,138 @@ public class MainFrame extends javax.swing.JFrame
                     }
                 }
             }
-
+            
             for(int i=0;i<population.size();i++)
             {
-                if (d.silentBadNeighbour(population.get(i))==0)
+                if (d.silentBadNeighbour(population.get(i))==0) 
                 {
                     System.out.println("chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
                     chromosom=population.get(i);
                     zmienna=1;
                     break ;
-                }
+                }     
             }
         }
 
-        System.out.println("Ilość kolorów pokolorowanego grafu na wyjściu: " + d.silentColours(chromosom));
-
+        //wypisywanie
+        /*for(int i=0; i<population.size(); i++)
+        {
+            d.idColorChromosom(population.get(i));
+            d.goodNeighbour(population.get(i));
+        }*/
+        
         System.out.println("koniec");
+       
+    }                                          
 
-    }
-
-    private void plikButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void plikButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }
+    }                                          
 
-    private void plikButtonMouseReleased(java.awt.event.MouseEvent evt) {
+    private void plikButtonMouseReleased(java.awt.event.MouseEvent evt) {                                         
         // TODO add your handling code here:
         int returnVal = fileChooser.showOpenDialog(this);
-
+        
         if(returnVal == JFileChooser.APPROVE_OPTION)
         {
             file = fileChooser.getSelectedFile();
             filename = file.toString();
-
+            
         }
 
-    }
+    }                                        
 
-    private void selection3ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void selection3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         slc = 3;
-    }
+    }                                          
 
-    private void crossover3ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void crossover3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         crv = 3;
-    }
+    }                                          
 
-    private void crossover4ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void crossover4ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         crv = 4;
-    }
+    }                                          
 
-    private void selection21ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void selection21ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         slc2 = 1;
-    }
+    }                                           
 
-    private void selection22ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void selection22ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         slc2 = 2;
-    }
+    }                                           
 
-    private void selection23ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void selection23ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         slc2 = 3;
-    }
+    }                                           
 
-    private void crossover21ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void crossover21ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         crv2 = 1;
-    }
+    }                                           
 
-    private void crossover22ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void crossover22ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         crv2 = 2;
-    }
+    }                                           
 
-    private void crossover23ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void crossover23ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         crv2 = 3;
-    }
+    }                                           
 
-    private void crossover24ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void crossover24ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         crv2 = 4;
-    }
+    }                                           
 
-    private void mutation21ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void mutation21ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         mtn2 = 1;
-    }
+    }                                          
 
-    private void gotoweButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void gotoweButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
         /* GraphDisp gd = new GraphDisp();
         gd.pack();
         gd.setVisible(true); */
-    }
+    }                                            
 
-    private void mutation2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void mutation2ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
         mtn = 2;
-    }
+    }                                         
 
-    private void mutation3ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void mutation3ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
         mtn = 3;
-    }
+    }                                         
 
-    private void mutation22ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void mutation22ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         mtn2 = 2;
-    }
+    }                                          
 
-    private void mutation23ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void mutation23ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         mtn2 = 3;
-    }
+    }                                          
 
-    private void grafButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void grafButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-        GraphDisp gd = new GraphDisp();
+        
+        
+       
+        GraphDisp gd = new GraphDisp(chromosom);
         gd.pack();
         //gd.setVisible(true);
-        gd.showGraph();
+        gd.showGraph(chromosom);
     }                                          
 /**/
     /**
@@ -1460,7 +1467,7 @@ public class MainFrame extends javax.swing.JFrame
             }
         });
     }
-
+    
     class FileFilter extends javax.swing.filechooser.FileFilter {
         @Override
         public boolean accept(File file) {
@@ -1473,7 +1480,7 @@ public class MainFrame extends javax.swing.JFrame
             // hard-coded = ugly, should be done via I18N
             return "Text documents (*.txt)";
         }
-    }
+    } 
 
     // Variables declaration - do not modify                     
     private javax.swing.ButtonGroup buttonGroup1;
