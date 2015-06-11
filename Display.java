@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 import java.util.Vector;
 
-
+/**
+ * Display
+ */
 public class Display {
     /**
      * graph wyświetla cały graf, tzn. ID i kolor każdego wierzchołka oraz jego sąsiadów, wraz z kolorami
@@ -87,5 +90,15 @@ public class Display {
         }
         return pomoc;
     }
-    
+
+    public int silentColours(Vector<Vertex> chromosom){
+        ArrayList<Integer> colorsOutValue = new ArrayList<>();
+
+        for(int i = 0; i < chromosom.size(); i++){
+            if(!colorsOutValue.contains(chromosom.get(i).kolor)) {
+                colorsOutValue.add(chromosom.get(i).kolor);
+            }
+        }
+        return colorsOutValue.size();
+    }
 }
