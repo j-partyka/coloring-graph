@@ -496,6 +496,8 @@ public class MainFrame extends javax.swing.JFrame
         
         for(int p=0; p<17000; p++)
         {   
+            textArea.setText("Pierwsza pętla:\n");
+            
             if(slc == 1)
             {
                 Map.Entry<Vector<Vertex>, Vector<Vertex>> parent = p1.random(population);
@@ -911,7 +913,7 @@ public class MainFrame extends javax.swing.JFrame
             {
                 if (d.silentBadNeighbour(population.get(i))==0) 
             	{
-                    System.out.println("chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
+                    textArea.setText("Chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
                     chromosom=population.get(i);
                     zmienna=1;
                     break ;
@@ -920,9 +922,11 @@ public class MainFrame extends javax.swing.JFrame
             if (zmienna==1) break;
         }
         
-        for(int p=0; p<3000; p++)
+        for(int p=17000; p<20000; p++)
         {
             if (zmienna==1) break;
+            
+            textArea.setText("Druga pętla:\n");
             
             if(slc2 == 1)
             {
@@ -1301,13 +1305,13 @@ public class MainFrame extends javax.swing.JFrame
             
             for(int i=0;i<population.size();i++)
             {
-                if (d.silentBadNeighbour(population.get(i))==0) 
-                {
+                //if (d.silentBadNeighbour(population.get(i))==0) 
+                //{
                     System.out.println("chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
                     chromosom=population.get(i);
                     zmienna=1;
                     break ;
-                }     
+                //}     
             }
         }
 
@@ -1426,10 +1430,10 @@ public class MainFrame extends javax.swing.JFrame
         
         
        
-        GraphDisp gd = new GraphDisp(chromosom);
+        GraphDisp gd = new GraphDisp(chromosom, filename);    
         gd.pack();
         //gd.setVisible(true);
-        gd.showGraph(chromosom);
+        gd.showGraph(chromosom, filename);
     }                                          
 /**/
     /**
