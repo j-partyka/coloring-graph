@@ -9,6 +9,8 @@ import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.EditingModalGraphMouse;
 import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
+import edu.uci.ics.jung.visualization.renderers.Renderer;
+import edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Paint;
@@ -96,12 +98,14 @@ public class GraphDisp extends javax.swing.JFrame {
         GraphDisp sgv = new GraphDisp(chrom, flnm); //We create our graph in here
         // The Layout<V, E> is parameterized by the vertex and edge types
         Layout<Integer, String> layout = new CircleLayout(sgv.g);
-        layout.setSize(new Dimension(300,300)); // sets the initial size of the layout space
+        layout.setSize(new Dimension(500,500)); // sets the initial size of the layout space
         // The BasicVisualizationServer<V,E> is parameterized by the vertex and edge types
         BasicVisualizationServer<Integer,String> vv = new BasicVisualizationServer<Integer,String>(layout);
-        vv.setPreferredSize(new Dimension(350,350)); //Sets the viewing area size
+        vv.setPreferredSize(new Dimension(500,500)); //Sets the viewing area size
         
         vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+        
+        vv.getRenderer().getVertexLabelRenderer().setPosition(Position.AUTO);
         
        
         Transformer<Integer, Paint> vertexPaint = new Transformer<Integer, Paint>()
