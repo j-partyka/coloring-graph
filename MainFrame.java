@@ -15,6 +15,8 @@ public class MainFrame extends javax.swing.JFrame
     Vector<Vertex> chromosom = new Vector<>();
     Vector<Vector<Vertex> > population = new Vector<>();
     
+    int pom1=0, pom2=0;
+    
     public Vector<Vertex> getChromosom()
     {
         return chromosom;
@@ -315,6 +317,10 @@ public class MainFrame extends javax.swing.JFrame
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -327,56 +333,39 @@ public class MainFrame extends javax.swing.JFrame
                             .addComponent(selection22)
                             .addComponent(selection21)
                             .addComponent(selection2label))
-                        .addGap(20, 20, 20)
+                        .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(crossoverLabel)
-                                    .addComponent(crossover1)
-                                    .addComponent(crossover2)
-                                    .addComponent(crossover3)
-                                    .addComponent(crossover4))
-                                .addContainerGap())
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(crossover2label)
-                                    .addComponent(crossover21)
-                                    .addComponent(crossover22)
-                                    .addComponent(crossover23)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(gotoweButton)
-                                        .addComponent(crossover24)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(grafButton)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(mutation23)
-                                            .addComponent(mutation22)
-                                            .addComponent(mutation21)
-                                            .addComponent(mutation2label)
-                                            .addComponent(mutationLabel)
-                                            .addComponent(mutation1)
-                                            .addComponent(mutation2)
-                                            .addComponent(mutation3))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(liczbaKolorowLabel)
-                            .addComponent(wielkoscPopulacjiLabel)
-                            .addComponent(wielkoscPopulacji, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                            .addComponent(crossover1)
+                            .addComponent(crossoverLabel)
+                            .addComponent(crossover2)
+                            .addComponent(crossover3)
+                            .addComponent(crossover4)
+                            .addComponent(crossover2label)
+                            .addComponent(crossover21)
+                            .addComponent(crossover22)
+                            .addComponent(crossover23)
+                            .addComponent(crossover24)
+                            .addComponent(plikButton)))
+                    .addComponent(liczbaKolorowLabel)
+                    .addComponent(wielkoscPopulacjiLabel)
+                    .addComponent(wielkoscPopulacji, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(plikButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(mutation3)
+                    .addComponent(mutation2)
+                    .addComponent(mutation1)
+                    .addComponent(mutationLabel)
+                    .addComponent(mutation2label)
+                    .addComponent(mutation21)
+                    .addComponent(mutation22)
+                    .addComponent(mutation23)
+                    .addComponent(gotoweButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(grafButton)
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,22 +414,22 @@ public class MainFrame extends javax.swing.JFrame
                     .addComponent(mutation23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(crossover24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(wielkoscPopulacjiLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(wielkoscPopulacji, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(liczbaKolorowLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(liczbaKolorow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(plikButton)
-                    .addComponent(gotoweButton)
-                    .addComponent(grafButton))
+                    .addComponent(gotoweButton))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addComponent(grafButton)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -496,7 +485,7 @@ public class MainFrame extends javax.swing.JFrame
         
         for(int p=0; p<17000; p++)
         {   
-            textArea.setText("Pierwsza pętla:\n");
+            if(p==0) textArea.append("\n\nPierwsza pętla:\n");
             
             if(slc == 1)
             {
@@ -512,7 +501,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - One Point\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -521,7 +510,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - One Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -531,7 +520,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - One Point\nMutation - Random transposition");
                     }
                 }
 
@@ -545,7 +534,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - Two Point\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -554,7 +543,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -564,7 +553,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
                 
@@ -578,7 +567,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Simple");
+                        if(p==0)textArea.append("Selection - Random\nCrossover - Uniform\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -587,7 +576,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -597,7 +586,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
                 
@@ -611,7 +600,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - Arithmetic\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -620,7 +609,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -630,7 +619,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Random\nCrossover - Arithmetic\nMutation - Random transposition");
                     }
                 }
             }
@@ -649,7 +638,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - One Point\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -658,7 +647,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -668,7 +657,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - One Point\nMutation - Random transposition");
                     }
                 }
 
@@ -682,7 +671,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - Two Point\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -691,7 +680,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -701,7 +690,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
                 
@@ -715,7 +704,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - Uniform\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -724,7 +713,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -734,7 +723,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
                 
@@ -748,7 +737,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -757,7 +746,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -767,7 +756,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Random transposition");
                     }
                 }
             }
@@ -786,7 +775,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - One Point\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -795,7 +784,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -805,7 +794,7 @@ public class MainFrame extends javax.swing.JFrame
                            int probability = new Random().nextInt(100);
                            if (probability < 30)  population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - One Point\nMutation - Random transposition");
                     }
                 }
 
@@ -819,7 +808,7 @@ public class MainFrame extends javax.swing.JFrame
                            int probability = new Random().nextInt(100);
                            if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - Two Point\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -828,7 +817,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -838,7 +827,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
                 
@@ -852,7 +841,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - Uniform\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -861,7 +850,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -871,7 +860,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
                 
@@ -885,7 +874,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Simple");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Simple");
                     }
                     else if(mtn == 2)
                     {
@@ -894,7 +883,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn == 3)
@@ -904,7 +893,7 @@ public class MainFrame extends javax.swing.JFrame
                             int probability = new Random().nextInt(100);
                             if (probability < 30) population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Random transposition");
+                        if(p==0) textArea.append("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Random transposition");
                     }
                 }
             }
@@ -913,7 +902,8 @@ public class MainFrame extends javax.swing.JFrame
             {
                 if (d.silentBadNeighbour(population.get(i))==0) 
             	{
-                    textArea.setText("Chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
+                    textArea.append("Chromosom" + i + "został poprawnie pokolorowany po " + p + " iteracjach.");
+                    textArea.append("Liczba kolorów użytych do pokolorowania grafu: " + d.silentBadNeighbour(chromosom));
                     chromosom=population.get(i);
                     zmienna=1;
                     break ;
@@ -926,7 +916,7 @@ public class MainFrame extends javax.swing.JFrame
         {
             if (zmienna==1) break;
             
-            textArea.setText("Druga pętla:\n");
+            textArea.append("\n\nDruga pętla:\n");
             
             if(slc2 == 1)
             {
@@ -941,7 +931,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - One Point\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -949,7 +939,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - One Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -958,7 +948,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - One Point\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - One Point\nMutation - Random transposition");
                     }
                 }
 
@@ -971,7 +961,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - Two Point\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -979,7 +969,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -988,7 +978,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Two Point\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
                 
@@ -1001,7 +991,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - Uniform\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1009,7 +999,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1018,7 +1008,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Uniform\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
                 
@@ -1031,7 +1021,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - Arithmetic\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1039,7 +1029,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1048,7 +1038,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Random\nCrossover - Arithmetic\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Random\nCrossover - Arithmetic\nMutation - Random transposition");
                     }
                 }
             }
@@ -1066,7 +1056,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - One Point\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1074,7 +1064,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1083,7 +1073,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - One Point\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - One Point\nMutation - Random transposition");
                     }
                 }
 
@@ -1096,7 +1086,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - Two Point\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1104,7 +1094,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1113,7 +1103,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Two Point\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
                 
@@ -1126,7 +1116,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - Uniform\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1134,7 +1124,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1143,7 +1133,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Uniform\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
                 
@@ -1156,7 +1146,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1164,7 +1154,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1173,7 +1163,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Best Parent\nCrossover - Arithmetic\nMutation - Random transposition");
                     }
                 }
             }
@@ -1191,7 +1181,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - One Point\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1199,7 +1189,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - One Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1208,7 +1198,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - One Point\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - One Point\nMutation - Random transposition");
                     }
                 }
 
@@ -1221,7 +1211,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - Two Point\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1229,7 +1219,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - Two Point\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1238,7 +1228,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Two Point\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - Two Point\nMutation - Random transposition");
                     }
                 }
                 
@@ -1251,7 +1241,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - Uniform\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1259,7 +1249,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - Uniform\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1268,7 +1258,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Uniform\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - Uniform\nMutation - Random transposition");
                     }
                 }
                 
@@ -1281,7 +1271,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.simple(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Simple");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Simple");
                     }
                     else if(mtn2 == 2)
                     {
@@ -1289,7 +1279,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.minMaxTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Min-max transposition");
                     }
                     
                     else if(mtn2 == 3)
@@ -1298,7 +1288,7 @@ public class MainFrame extends javax.swing.JFrame
                         {
                             population.set(i, Mutation.randomTransposition(population.get(i), colours));
                         }
-                        textArea.setText("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Random transposition");
+                        if(p==17000) textArea.append("Selection - Fit Parent\nCrossover - Arithmetic\nMutation - Random transposition");
                     }
                 }
             }
@@ -1307,7 +1297,8 @@ public class MainFrame extends javax.swing.JFrame
             {
                 //if (d.silentBadNeighbour(population.get(i))==0) 
                 //{
-                    System.out.println("chromosom "+ i+" został poprawnie pokolorowany po "+ p + " iteracjach.");
+                    textArea.append("\n\nChromosom " + i + " został poprawnie pokolorowany po " + p + " iteracjach.");
+                    textArea.append("\nLiczba kolorów użytych do pokolorowania grafu: " + d.silentBadNeighbour(chromosom)+".\n");
                     chromosom=population.get(i);
                     zmienna=1;
                     break ;
@@ -1321,6 +1312,8 @@ public class MainFrame extends javax.swing.JFrame
             d.idColorChromosom(population.get(i));
             d.goodNeighbour(population.get(i));
         }*/
+        
+        textArea.append("Wybrany plik: "+filename);
         
         System.out.println("koniec");
        
