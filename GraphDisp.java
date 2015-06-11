@@ -25,14 +25,14 @@ public class GraphDisp extends javax.swing.JFrame {
     int nodeCount, edgeCount;
     Factory <Integer> vertexFactory;
     Factory<String> edgeFactory;
-    String filename = "graf.txt";
+    String filename;
     private Vector<Vertex> chromosom;
     String z = "I"; //do nazywania krawędzi
 
     /**
      * Creates new form GraphDisp
      */
-    public GraphDisp(Vector<Vertex> chromosom) {
+    public GraphDisp(Vector<Vertex> chromosom, String filename) {
         initComponents();
         g = new SparseMultigraph<>();
         nodeCount = 0; edgeCount = 0;
@@ -47,15 +47,13 @@ public class GraphDisp extends javax.swing.JFrame {
             }
         };
         
+        this.filename = filename;
+        
         Graph2 gr = new Graph2(filename);
         g = gr.load();
         this.chromosom = chromosom;
     }
-    
-    public void setFilename(String filename)
-    {
-        this.filename = filename;
-    }
+   
     
     /*public void rysowanieWlasnegoGrafu()
     {
@@ -93,9 +91,9 @@ public class GraphDisp extends javax.swing.JFrame {
         frame.setVisible(true);  
     }*/
     
-    public void showGraph(Vector<Vertex> chrom)
+    public void showGraph(Vector<Vertex> chrom, String flnm)
     {
-        GraphDisp sgv = new GraphDisp(chrom); //We create our graph in here
+        GraphDisp sgv = new GraphDisp(chrom, flnm); //We create our graph in here
         // The Layout<V, E> is parameterized by the vertex and edge types
         Layout<Integer, String> layout = new CircleLayout(sgv.g);
         layout.setSize(new Dimension(300,300)); // sets the initial size of the layout space
