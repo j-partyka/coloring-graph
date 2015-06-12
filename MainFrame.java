@@ -902,8 +902,7 @@ public class MainFrame extends javax.swing.JFrame
             {
                 if (d.silentBadNeighbour(population.get(i))==0) 
             	{
-                    textArea.append("Chromosom" + i + "został poprawnie pokolorowany po " + p + " iteracjach.");
-                    textArea.append("Liczba kolorów użytych do pokolorowania grafu: " + d.silentBadNeighbour(chromosom));
+                    textArea.append("\n\nChromosom " + i + " został poprawnie pokolorowany po " + p + " iteracjach.\n");
                     chromosom=population.get(i);
                     zmienna=1;
                     break ;
@@ -1295,27 +1294,19 @@ public class MainFrame extends javax.swing.JFrame
             
             for(int i=0;i<population.size();i++)
             {
-                //if (d.silentBadNeighbour(population.get(i))==0) 
-                //{
-                    textArea.append("\n\nChromosom " + i + " został poprawnie pokolorowany po " + p + " iteracjach.");
-                    textArea.append("\nLiczba kolorów użytych do pokolorowania grafu: " + d.silentBadNeighbour(chromosom)+".\n");
-                    chromosom=population.get(i);
-                    zmienna=1;
-                    break ;
-                //}     
+                if (d.silentBadNeighbour(population.get(i))==0) {
+                    textArea.append("\n\nChromosom " + i + " został poprawnie pokolorowany po " + p + " iteracjach.\n");
+                    chromosom = population.get(i);
+                    zmienna = 1;
+                    break;
+                }
             }
         }
 
-        //wypisywanie
-        /*for(int i=0; i<population.size(); i++)
-        {
-            d.idColorChromosom(population.get(i));
-            d.goodNeighbour(population.get(i));
-        }*/
-        
-        textArea.append("Wybrany plik: "+filename);
-        
-        System.out.println("koniec");
+        textArea.append("\nLiczba kolorów użytych do pokolorowania grafu: " + d.silentColours(chromosom)+".\n");
+        textArea.append("Wybrany plik: " + filename);
+
+        textArea.append("\nKoniec");
        
     }                                          
 
