@@ -1,2 +1,3 @@
 # coloring-graph
-The Graph Coloring Problem
+The Graph Vertex Coloring Problem.
+Genetic algorithms.
